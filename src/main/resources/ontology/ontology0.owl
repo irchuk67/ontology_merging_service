@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/teachers#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/teachers#">
+    <rdfs:label>Teachers Ontology</rdfs:label>
+  </owl:Ontology>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#Teacher">
+    <rdfs:label>Teacher</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">email</owl:hasValue>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name</owl:hasValue>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#Department">
+    <rdfs:label>Department</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">name</owl:hasValue>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">faculty</owl:hasValue>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#ScientificWork">
+    <rdfs:label>ScientificWork</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">title</owl:hasValue>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">publicationDate</owl:hasValue>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">publisher</owl:hasValue>
+    <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">citationCount</owl:hasValue>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#Monograph">
+    <rdfs:label>Monograph</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#ScientificWork"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#Dissertation">
+    <rdfs:label>Dissertation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#ScientificWork"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#ConferencePaper">
+    <rdfs:label>ConferencePaper</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#ScientificWork"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#JournalArticle">
+    <rdfs:label>JournalArticle</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#ScientificWork"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#BookChapter">
+    <rdfs:label>BookChapter</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#ScientificWork"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.semanticweb.org/ontologies/teachers#Patent">
+    <rdfs:label>Patent</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#ScientificWork"/>
+  </rdfs:Class>
+
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/teachers#memberOf">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/teachers#Teacher"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/teachers#Department"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/teachers#hasWritten">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/teachers#Teacher"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/teachers#ScientificWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/teachers#isPartOf">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/teachers#BookChapter"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/teachers#Monograph"/>
+  </owl:ObjectProperty>
+
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/teachers#Teacher1">
+    <rdfs:label>Teacher 1</rdfs:label>
+    <memberOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#Department1"/>
+    <hasWritten rdf:resource="http://www.semanticweb.org/ontologies/teachers#Monograph1"/>
+    <hasWritten rdf:resource="http://www.semanticweb.org/ontologies/teachers#JournalArticle1"/>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/teachers#Teacher2">
+    <rdfs:label>Teacher 2</rdfs:label>
+    <memberOf rdf:resource="http://www.semanticweb.org/ontologies/teachers#Department2"/>
+    <hasWritten rdf:resource="http://www.semanticweb.org/ontologies/teachers#Dissertation1"/>
+    <hasWritten rdf:resource="http://www.semanticweb.org/ontologies/teachers#ConferencePaper1"/>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/teachers#Department1">
+    <rdfs:label>Department 1</rdfs:label>
+    <faculty rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Science</faculty>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/teachers#Department2">
+    <rdfs:label>Department 2</rdfs:label>
+    <faculty rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Humanities</faculty>
+  </owl:NamedIndividual>
+
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/teachers#Monograph1">
+    <rdfs:label>Monograph 1</rdfs:label>
+    <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Introduction to Artificial Intelligence</title>
+    <publicationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-01-01</publicationDate>
+    <publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Springer</publisher>
+    <citationCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</citationCount>
+  </owl:NamedIndividual>
+
+</rdf:RDF>

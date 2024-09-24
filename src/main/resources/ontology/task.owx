@@ -1,0 +1,1081 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/dobrovolskyyr/ontologies/2024/6/untitled-ontology-21"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/dobrovolskyyr/ontologies/2024/6/untitled-ontology-21">
+    <Prefix name="" IRI="http://www.semanticweb.org/dobrovolskyyr/ontologies/2024/6/untitled-ontology-21"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Color"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Drink"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#House"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sigar"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="owl:Nothing"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#drinked_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#drinks"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_color"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#house_near"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#left_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#lives_in"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#right_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#smokes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bear"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bird"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cafee"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cat"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ColorBlue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ColorGreen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ColorRed"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ColorWhite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ColorYellow"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dog"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dunhill"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Fish"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Horse"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#House1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#House2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#House3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#House4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#House5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HouseBlue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HouseGreen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HouseRed"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HouseWhite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HouseYellow"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Marlboro"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Milk"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pall_Mall"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PersonDatch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PersonEnglish"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PersonGerman"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PersonNorway"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PersonSweeden"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Phillip_Morris"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rothmans"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tea"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Water"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Color"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#ColorBlue"/>
+            <NamedIndividual IRI="#ColorGreen"/>
+            <NamedIndividual IRI="#ColorRed"/>
+            <NamedIndividual IRI="#ColorWhite"/>
+            <NamedIndividual IRI="#ColorYellow"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Drink"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Bear"/>
+            <NamedIndividual IRI="#Cafee"/>
+            <NamedIndividual IRI="#Milk"/>
+            <NamedIndividual IRI="#Tea"/>
+            <NamedIndividual IRI="#Water"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#House"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#House1"/>
+            <NamedIndividual IRI="#House2"/>
+            <NamedIndividual IRI="#House3"/>
+            <NamedIndividual IRI="#House4"/>
+            <NamedIndividual IRI="#House5"/>
+            <NamedIndividual IRI="#HouseBlue"/>
+            <NamedIndividual IRI="#HouseGreen"/>
+            <NamedIndividual IRI="#HouseRed"/>
+            <NamedIndividual IRI="#HouseWhite"/>
+            <NamedIndividual IRI="#HouseYellow"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Person"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#PersonDatch"/>
+            <NamedIndividual IRI="#PersonEnglish"/>
+            <NamedIndividual IRI="#PersonGerman"/>
+            <NamedIndividual IRI="#PersonNorway"/>
+            <NamedIndividual IRI="#PersonSweeden"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Pet"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Bird"/>
+            <NamedIndividual IRI="#Cat"/>
+            <NamedIndividual IRI="#Dog"/>
+            <NamedIndividual IRI="#Fish"/>
+            <NamedIndividual IRI="#Horse"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Sigar"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Dunhill"/>
+            <NamedIndividual IRI="#Marlboro"/>
+            <NamedIndividual IRI="#Pall_Mall"/>
+            <NamedIndividual IRI="#Phillip_Morris"/>
+            <NamedIndividual IRI="#Rothmans"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#House"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#has_color"/>
+            <Class IRI="#Color"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#drinks"/>
+            <Class IRI="#Drink"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#has"/>
+            <Class IRI="#Pet"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#lives_in"/>
+            <Class IRI="#House"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#smokes"/>
+            <Class IRI="#Sigar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Color"/>
+        <Class IRI="#Drink"/>
+        <Class IRI="#House"/>
+        <Class IRI="#Person"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Color"/>
+        <Class IRI="#Drink"/>
+        <Class IRI="#House"/>
+        <Class IRI="#Person"/>
+        <Class IRI="#Pet"/>
+        <Class IRI="#Sigar"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Color"/>
+        <Class IRI="#Drink"/>
+        <Class IRI="#House"/>
+        <Class IRI="#Person"/>
+        <Class IRI="#Sigar"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Color"/>
+        <Class IRI="#House"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Color"/>
+        <Class IRI="#Person"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#House"/>
+        <Class IRI="#Person"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Drink"/>
+        <NamedIndividual IRI="#Bear"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pet"/>
+        <NamedIndividual IRI="#Bird"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Drink"/>
+        <NamedIndividual IRI="#Cafee"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pet"/>
+        <NamedIndividual IRI="#Cat"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#ColorBlue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#ColorGreen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#ColorRed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#ColorWhite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#ColorYellow"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pet"/>
+        <NamedIndividual IRI="#Dog"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sigar"/>
+        <NamedIndividual IRI="#Dunhill"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pet"/>
+        <NamedIndividual IRI="#Fish"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pet"/>
+        <NamedIndividual IRI="#Horse"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#House1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#right_of"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+        <NamedIndividual IRI="#House1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#House2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#House3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#lives_in"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#drinks"/>
+                    <NamedIndividual IRI="#Milk"/>
+                </ObjectHasValue>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#House3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#House4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#House5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#left_of"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+        <NamedIndividual IRI="#House5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#HouseBlue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#lives_in"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#has"/>
+                    <NamedIndividual IRI="#Horse"/>
+                </ObjectHasValue>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#HouseBlue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#HouseGreen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#lives_in"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#drinks"/>
+                    <NamedIndividual IRI="#Cafee"/>
+                </ObjectHasValue>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#HouseGreen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#HouseRed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#HouseWhite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#House"/>
+        <NamedIndividual IRI="#HouseYellow"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#lives_in"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#smokes"/>
+                    <NamedIndividual IRI="#Dunhill"/>
+                </ObjectHasValue>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#HouseYellow"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sigar"/>
+        <NamedIndividual IRI="#Marlboro"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Drink"/>
+        <NamedIndividual IRI="#Milk"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sigar"/>
+        <NamedIndividual IRI="#Pall_Mall"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#smokes"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#has"/>
+                    <NamedIndividual IRI="#Bird"/>
+                </ObjectHasValue>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#Pall_Mall"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#PersonDatch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#PersonEnglish"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#PersonGerman"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#PersonNorway"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#lives_in"/>
+            <ObjectIntersectionOf>
+                <Class IRI="#House"/>
+                <ObjectUnionOf>
+                    <ObjectHasValue>
+                        <ObjectProperty IRI="#left_of"/>
+                        <NamedIndividual IRI="#HouseBlue"/>
+                    </ObjectHasValue>
+                    <ObjectHasValue>
+                        <ObjectProperty IRI="#right_of"/>
+                        <NamedIndividual IRI="#HouseBlue"/>
+                    </ObjectHasValue>
+                </ObjectUnionOf>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#PersonNorway"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#lives_in"/>
+            <ObjectIntersectionOf>
+                <Class IRI="#House"/>
+                <ObjectAllValuesFrom>
+                    <ObjectProperty IRI="#right_of"/>
+                    <Class abbreviatedIRI="owl:Nothing"/>
+                </ObjectAllValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#PersonNorway"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Person"/>
+        <NamedIndividual IRI="#PersonSweeden"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sigar"/>
+        <NamedIndividual IRI="#Phillip_Morris"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#smokes"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#drinks"/>
+                    <NamedIndividual IRI="#Bear"/>
+                </ObjectHasValue>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#Phillip_Morris"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sigar"/>
+        <NamedIndividual IRI="#Rothmans"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#smokes"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#lives_in"/>
+                    <ObjectUnionOf>
+                        <ObjectIntersectionOf>
+                            <Class IRI="#House"/>
+                            <ObjectSomeValuesFrom>
+                                <ObjectProperty IRI="#left_of"/>
+                                <ObjectIntersectionOf>
+                                    <Class IRI="#House"/>
+                                    <ObjectSomeValuesFrom>
+                                        <ObjectInverseOf>
+                                            <ObjectProperty IRI="#lives_in"/>
+                                        </ObjectInverseOf>
+                                        <ObjectIntersectionOf>
+                                            <Class IRI="#Person"/>
+                                            <ObjectHasValue>
+                                                <ObjectProperty IRI="#drinks"/>
+                                                <NamedIndividual IRI="#Water"/>
+                                            </ObjectHasValue>
+                                        </ObjectIntersectionOf>
+                                    </ObjectSomeValuesFrom>
+                                </ObjectIntersectionOf>
+                            </ObjectSomeValuesFrom>
+                        </ObjectIntersectionOf>
+                        <ObjectSomeValuesFrom>
+                            <ObjectProperty IRI="#right_of"/>
+                            <ObjectIntersectionOf>
+                                <Class IRI="#House"/>
+                                <ObjectSomeValuesFrom>
+                                    <ObjectInverseOf>
+                                        <ObjectProperty IRI="#lives_in"/>
+                                    </ObjectInverseOf>
+                                    <ObjectIntersectionOf>
+                                        <Class IRI="#Person"/>
+                                        <ObjectHasValue>
+                                            <ObjectProperty IRI="#drinks"/>
+                                            <NamedIndividual IRI="#Water"/>
+                                        </ObjectHasValue>
+                                    </ObjectIntersectionOf>
+                                </ObjectSomeValuesFrom>
+                            </ObjectIntersectionOf>
+                        </ObjectSomeValuesFrom>
+                    </ObjectUnionOf>
+                </ObjectSomeValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#Rothmans"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="#smokes"/>
+            </ObjectInverseOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Person"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#lives_in"/>
+                    <ObjectUnionOf>
+                        <ObjectIntersectionOf>
+                            <Class IRI="#House"/>
+                            <ObjectSomeValuesFrom>
+                                <ObjectProperty IRI="#left_of"/>
+                                <ObjectIntersectionOf>
+                                    <Class IRI="#House"/>
+                                    <ObjectSomeValuesFrom>
+                                        <ObjectInverseOf>
+                                            <ObjectProperty IRI="#lives_in"/>
+                                        </ObjectInverseOf>
+                                        <ObjectIntersectionOf>
+                                            <Class IRI="#Person"/>
+                                            <ObjectHasValue>
+                                                <ObjectProperty IRI="#has"/>
+                                                <NamedIndividual IRI="#Cat"/>
+                                            </ObjectHasValue>
+                                        </ObjectIntersectionOf>
+                                    </ObjectSomeValuesFrom>
+                                </ObjectIntersectionOf>
+                            </ObjectSomeValuesFrom>
+                        </ObjectIntersectionOf>
+                        <ObjectSomeValuesFrom>
+                            <ObjectProperty IRI="#right_of"/>
+                            <ObjectIntersectionOf>
+                                <Class IRI="#House"/>
+                                <ObjectSomeValuesFrom>
+                                    <ObjectInverseOf>
+                                        <ObjectProperty IRI="#lives_in"/>
+                                    </ObjectInverseOf>
+                                    <ObjectIntersectionOf>
+                                        <Class IRI="#Person"/>
+                                        <ObjectHasValue>
+                                            <ObjectProperty IRI="#has"/>
+                                            <NamedIndividual IRI="#Cat"/>
+                                        </ObjectHasValue>
+                                    </ObjectIntersectionOf>
+                                </ObjectSomeValuesFrom>
+                            </ObjectIntersectionOf>
+                        </ObjectSomeValuesFrom>
+                    </ObjectUnionOf>
+                </ObjectSomeValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectSomeValuesFrom>
+        <NamedIndividual IRI="#Rothmans"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Drink"/>
+        <NamedIndividual IRI="#Tea"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Drink"/>
+        <NamedIndividual IRI="#Water"/>
+    </ClassAssertion>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#Bear"/>
+        <NamedIndividual IRI="#Cafee"/>
+        <NamedIndividual IRI="#Milk"/>
+        <NamedIndividual IRI="#Tea"/>
+        <NamedIndividual IRI="#Water"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#Bird"/>
+        <NamedIndividual IRI="#Cat"/>
+        <NamedIndividual IRI="#Dog"/>
+        <NamedIndividual IRI="#Fish"/>
+        <NamedIndividual IRI="#Horse"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorBlue"/>
+        <NamedIndividual IRI="#ColorGreen"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorBlue"/>
+        <NamedIndividual IRI="#ColorRed"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorBlue"/>
+        <NamedIndividual IRI="#ColorWhite"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorBlue"/>
+        <NamedIndividual IRI="#ColorYellow"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorGreen"/>
+        <NamedIndividual IRI="#ColorRed"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorGreen"/>
+        <NamedIndividual IRI="#ColorWhite"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorGreen"/>
+        <NamedIndividual IRI="#ColorYellow"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorRed"/>
+        <NamedIndividual IRI="#ColorWhite"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorRed"/>
+        <NamedIndividual IRI="#ColorYellow"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#ColorWhite"/>
+        <NamedIndividual IRI="#ColorYellow"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#Dunhill"/>
+        <NamedIndividual IRI="#Marlboro"/>
+        <NamedIndividual IRI="#Pall_Mall"/>
+        <NamedIndividual IRI="#Phillip_Morris"/>
+        <NamedIndividual IRI="#Rothmans"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House1"/>
+        <NamedIndividual IRI="#House2"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House1"/>
+        <NamedIndividual IRI="#House3"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House1"/>
+        <NamedIndividual IRI="#House4"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House1"/>
+        <NamedIndividual IRI="#House5"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House2"/>
+        <NamedIndividual IRI="#House3"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House2"/>
+        <NamedIndividual IRI="#House4"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House2"/>
+        <NamedIndividual IRI="#House5"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House3"/>
+        <NamedIndividual IRI="#House4"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House3"/>
+        <NamedIndividual IRI="#House5"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#House4"/>
+        <NamedIndividual IRI="#House5"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#HouseBlue"/>
+        <NamedIndividual IRI="#HouseGreen"/>
+        <NamedIndividual IRI="#HouseRed"/>
+        <NamedIndividual IRI="#HouseWhite"/>
+        <NamedIndividual IRI="#HouseYellow"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#PersonDatch"/>
+        <NamedIndividual IRI="#PersonEnglish"/>
+        <NamedIndividual IRI="#PersonGerman"/>
+        <NamedIndividual IRI="#PersonNorway"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#PersonDatch"/>
+        <NamedIndividual IRI="#PersonEnglish"/>
+        <NamedIndividual IRI="#PersonGerman"/>
+        <NamedIndividual IRI="#PersonNorway"/>
+        <NamedIndividual IRI="#PersonSweeden"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#PersonDatch"/>
+        <NamedIndividual IRI="#PersonEnglish"/>
+        <NamedIndividual IRI="#PersonNorway"/>
+    </DifferentIndividuals>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#PersonEnglish"/>
+        <NamedIndividual IRI="#PersonNorway"/>
+    </DifferentIndividuals>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#house_near"/>
+        <NamedIndividual IRI="#House1"/>
+        <NamedIndividual IRI="#House2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#house_near"/>
+        <NamedIndividual IRI="#House2"/>
+        <NamedIndividual IRI="#House3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#right_of"/>
+        <NamedIndividual IRI="#House2"/>
+        <NamedIndividual IRI="#House1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#house_near"/>
+        <NamedIndividual IRI="#House3"/>
+        <NamedIndividual IRI="#House4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#right_of"/>
+        <NamedIndividual IRI="#House3"/>
+        <NamedIndividual IRI="#House2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#house_near"/>
+        <NamedIndividual IRI="#House4"/>
+        <NamedIndividual IRI="#House3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#right_of"/>
+        <NamedIndividual IRI="#House4"/>
+        <NamedIndividual IRI="#House3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#house_near"/>
+        <NamedIndividual IRI="#House5"/>
+        <NamedIndividual IRI="#House4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#right_of"/>
+        <NamedIndividual IRI="#House5"/>
+        <NamedIndividual IRI="#House4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has_color"/>
+        <NamedIndividual IRI="#HouseBlue"/>
+        <NamedIndividual IRI="#ColorBlue"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has_color"/>
+        <NamedIndividual IRI="#HouseGreen"/>
+        <NamedIndividual IRI="#ColorGreen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#left_of"/>
+        <NamedIndividual IRI="#HouseGreen"/>
+        <NamedIndividual IRI="#HouseWhite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has_color"/>
+        <NamedIndividual IRI="#HouseRed"/>
+        <NamedIndividual IRI="#ColorRed"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has_color"/>
+        <NamedIndividual IRI="#HouseWhite"/>
+        <NamedIndividual IRI="#ColorWhite"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has_color"/>
+        <NamedIndividual IRI="#HouseYellow"/>
+        <NamedIndividual IRI="#ColorYellow"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#drinks"/>
+        <NamedIndividual IRI="#PersonDatch"/>
+        <NamedIndividual IRI="#Tea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#lives_in"/>
+        <NamedIndividual IRI="#PersonEnglish"/>
+        <NamedIndividual IRI="#HouseRed"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#smokes"/>
+        <NamedIndividual IRI="#PersonGerman"/>
+        <NamedIndividual IRI="#Marlboro"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has"/>
+        <NamedIndividual IRI="#PersonSweeden"/>
+        <NamedIndividual IRI="#Dog"/>
+    </ObjectPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#left_of"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#right_of"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#drinked_by"/>
+        <ObjectProperty IRI="#drinks"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#left_of"/>
+        <ObjectProperty IRI="#right_of"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#drinked_by"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#drinks"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#has"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#has_color"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#left_of"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#lives_in"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#right_of"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#smokes"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#drinked_by"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#drinks"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#has"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#has_color"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#left_of"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#lives_in"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#right_of"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#smokes"/>
+    </InverseFunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#house_near"/>
+    </SymmetricObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#drinks"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#has"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#house_near"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#left_of"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#lives_in"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#right_of"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#smokes"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#drinked_by"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#drinks"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has_color"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#house_near"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#left_of"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#lives_in"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#right_of"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#smokes"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#drinked_by"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#drinks"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has"/>
+        <Class IRI="#Pet"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has_color"/>
+        <Class IRI="#Color"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#house_near"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#left_of"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#lives_in"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#right_of"/>
+        <Class IRI="#House"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#smokes"/>
+        <Class IRI="#Sigar"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

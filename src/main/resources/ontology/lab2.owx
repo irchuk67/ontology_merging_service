@@ -1,0 +1,837 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/foxma/ontologies/2023/11/scientific-work-ontology-2"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/foxma/ontologies/2023/11/scientific-work-ontology-2">
+    <Prefix name="" IRI="http://www.semanticweb.org/foxma/ontologies/2023/11/scientific-work-ontology-2/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="scientific-work-ontology-2" IRI="http://www.semanticweb.org/foxma/ontologies/2023/11/scientific-work-ontology-2#"/>
+    <Declaration>
+        <Class IRI="#Academic_degree"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Academic_status"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Article"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Conference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Department"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dissertation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Faculty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Institute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Meetup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monograph"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Performance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Possition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Publications"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Report"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Scientific_work"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Study_guide"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Teacher"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Teachers_category"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Text_book"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#University"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#HasDegree"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#HasPosition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#HasStatus"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ParticipatedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Published"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#WorksIn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Date"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#NumberOfPages"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Topic"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#firstName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#lastName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#numberOfWorks"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#researchBranch"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#yearOfFoundation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Academician"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Assistant_lecturer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Associate_professor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Doctoral_student"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Grand_PhD"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Head_of_department"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IPZE"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PhD"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Professor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Senior_instructor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Senior_lecturer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Senior_scientific_associate"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Academic_degree"/>
+        <Class IRI="#Teachers_category"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Academic_status"/>
+        <Class IRI="#Teachers_category"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Article"/>
+        <Class IRI="#Publications"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Conference"/>
+        <Class IRI="#Performance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Department"/>
+        <Class IRI="#University"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dissertation"/>
+        <Class IRI="#Publications"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Faculty"/>
+        <Class IRI="#University"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Institute"/>
+        <Class IRI="#University"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Meetup"/>
+        <Class IRI="#Performance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monograph"/>
+        <Class IRI="#Publications"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Performance"/>
+        <Class IRI="#Scientific_work"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Possition"/>
+        <Class IRI="#Teachers_category"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Publications"/>
+        <Class IRI="#Scientific_work"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Report"/>
+        <Class IRI="#Performance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Study_guide"/>
+        <Class IRI="#Publications"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Text_book"/>
+        <Class IRI="#Publications"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Academic_status"/>
+        <NamedIndividual IRI="#Academician"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Possition"/>
+        <NamedIndividual IRI="#Assistant_lecturer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Academic_status"/>
+        <NamedIndividual IRI="#Associate_professor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Academic_degree"/>
+        <NamedIndividual IRI="#Doctoral_student"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Teacher"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Academic_degree"/>
+        <NamedIndividual IRI="#Grand_PhD"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Possition"/>
+        <NamedIndividual IRI="#Head_of_department"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Department"/>
+        <NamedIndividual IRI="#IPZE"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Teacher"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Academic_degree"/>
+        <NamedIndividual IRI="#PhD"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Academic_status"/>
+        <NamedIndividual IRI="#Professor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Article"/>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Publications"/>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Possition"/>
+        <NamedIndividual IRI="#Senior_instructor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Possition"/>
+        <NamedIndividual IRI="#Senior_lecturer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Academic_status"/>
+        <NamedIndividual IRI="#Senior_scientific_associate"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HasDegree"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <NamedIndividual IRI="#Professor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HasPosition"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <NamedIndividual IRI="#Senior_lecturer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HasStatus"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <NamedIndividual IRI="#Grand_PhD"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#WorksIn"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <NamedIndividual IRI="#IPZE"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HasDegree"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <NamedIndividual IRI="#Associate_professor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HasPosition"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <NamedIndividual IRI="#Head_of_department"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#HasStatus"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <NamedIndividual IRI="#Grand_PhD"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#Published"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#WorksIn"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <NamedIndividual IRI="#IPZE"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Academician"/>
+        <Literal>Academician</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Assistant_lecturer"/>
+        <Literal>Assistant lecturer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Associate_professor"/>
+        <Literal>Associate professor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Doctoral_student"/>
+        <Literal>Doctoral student</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#firstName"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <Literal>Natalia</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#lastName"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <Literal>Fedorova</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#numberOfWorks"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">14</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#researchBranch"/>
+        <NamedIndividual IRI="#Fedorova_Natalia"/>
+        <Literal>Big data</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Grand_PhD"/>
+        <Literal>Grand PhD</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Head_of_department"/>
+        <Literal>Head of department</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#IPZE"/>
+        <Literal>Software engineering in energy</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#location"/>
+        <NamedIndividual IRI="#IPZE"/>
+        <Literal>Polytechnical street, 6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#researchBranch"/>
+        <NamedIndividual IRI="#IPZE"/>
+        <Literal>Software engineering</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#yearOfFoundation"/>
+        <NamedIndividual IRI="#IPZE"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2022</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#firstName"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <Literal>Oleksandr</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#lastName"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <Literal>Koval</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#numberOfWorks"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">57</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#researchBranch"/>
+        <NamedIndividual IRI="#Koval_Oleksandr"/>
+        <Literal>Data engineering</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#PhD"/>
+        <Literal>Philosophy doctor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Professor"/>
+        <Literal>Professor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Date"/>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2019-08-22T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+        <Literal>Refining the typical scenarious by additional factors</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#NumberOfPages"/>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#researchBranch"/>
+        <NamedIndividual IRI="#Refining_the_typical_scenarious_by_additional_factors"/>
+        <Literal>Math and computer moduling</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Senior_instructor"/>
+        <Literal>Senior instructor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Senior_lecturer"/>
+        <Literal>Senior lecturer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Name"/>
+        <NamedIndividual IRI="#Senior_scientific_associate"/>
+        <Literal>Senior scientific associate</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#HasDegree"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#HasPosition"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#HasStatus"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ParticipatedIn"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Published"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#WorksIn"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#HasDegree"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#HasPosition"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#HasStatus"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#ParticipatedIn"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#Published"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#WorksIn"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#HasDegree"/>
+        <Class IRI="#Teacher"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#HasPosition"/>
+        <Class IRI="#Teacher"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#HasStatus"/>
+        <Class IRI="#Teacher"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#ParticipatedIn"/>
+        <Class IRI="#Teacher"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Published"/>
+        <Class IRI="#Teacher"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#WorksIn"/>
+        <Class IRI="#Teacher"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#HasDegree"/>
+        <Class IRI="#Academic_degree"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#HasPosition"/>
+        <Class IRI="#Possition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#HasStatus"/>
+        <Class IRI="#Academic_status"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ParticipatedIn"/>
+        <Class IRI="#Performance"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Published"/>
+        <Class IRI="#Publications"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#WorksIn"/>
+        <Class IRI="#University"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Date"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Name"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#NumberOfPages"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Topic"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#firstName"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#lastName"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#location"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#numberOfWorks"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#researchBranch"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Date"/>
+        <Class IRI="#Performance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Date"/>
+        <Class IRI="#Publications"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Date"/>
+        <Class IRI="#Scientific_work"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Academic_degree"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Academic_status"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Department"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Faculty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Institute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Performance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Possition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#Publications"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Name"/>
+        <Class IRI="#University"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#NumberOfPages"/>
+        <Class IRI="#Publications"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Topic"/>
+        <Class IRI="#Performance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Topic"/>
+        <Class IRI="#Publications"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#firstName"/>
+        <Class IRI="#Teacher"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#lastName"/>
+        <Class IRI="#Teacher"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#location"/>
+        <Class IRI="#Department"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#location"/>
+        <Class IRI="#Faculty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#location"/>
+        <Class IRI="#Institute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#location"/>
+        <Class IRI="#Performance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#location"/>
+        <Class IRI="#University"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#numberOfWorks"/>
+        <Class IRI="#Teacher"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#researchBranch"/>
+        <Class IRI="#Department"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#researchBranch"/>
+        <Class IRI="#Faculty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#researchBranch"/>
+        <Class IRI="#Institute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#researchBranch"/>
+        <Class IRI="#Performance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#researchBranch"/>
+        <Class IRI="#Publications"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#researchBranch"/>
+        <Class IRI="#Scientific_work"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#researchBranch"/>
+        <Class IRI="#Teacher"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#yearOfFoundation"/>
+        <Class IRI="#University"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+        <Class IRI="#Department"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+        <Class IRI="#Faculty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+        <Class IRI="#Institute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+        <Class IRI="#University"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#Date"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#NumberOfPages"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Topic"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#firstName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#lastName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#location"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#numberOfWorks"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#researchBranch"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#yearOfFoundation"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Article</IRI>
+        <Literal>A piece of writing included with others in a newspaper, magazine, or other print or online publication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Conference</IRI>
+        <Literal>An event, sometimes lasting a few days, at which there are a lot of talks and meetings about a particular subject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Dissertation</IRI>
+        <Literal>A research project completed as part of an undergraduate or postgraduate degree</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Meetup</IRI>
+        <Literal>Real-life gatherings where members and organizers get together to connect, discuss, and practice activities related to their shared interests</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Monograph</IRI>
+        <Literal>A specialist written work (in contrast to reference works) or exhibition on one subject or one aspect of a usually scholarly subject, often by a single author or artist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Performance</IRI>
+        <Literal>Kind of scientific work where teacher spoke to the audience</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Scientific_work</IRI>
+        <Literal>Scientific work that was performed by scientiast (teacher) at all</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Study_guide</IRI>
+        <Literal>A study guide can be anything (such as a textbook) that facilitates learning in a particular area, or be resources that foster comprehension of literature, research topics, history, and other subjects.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Text_book</IRI>
+        <Literal>A book containing a comprehensive compilation of content in a branch of study with the intention of explaining it.</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+

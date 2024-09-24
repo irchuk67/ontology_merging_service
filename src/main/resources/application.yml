@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ontology-handler
+  data:
+    mongodb:
+      uri: mongodb+srv://diploma:diploma@cluster0.n0a7g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: domain
+
+ontology:
+  file.root.location: ${FILE_ROOT_LOCATION}
+
+openai-api:
+  key: ${OPEN_AI_API_KEY}
+hugging-face-api:
+  key: ${HUGGING_FACE_API_KEY}
+
+logging:
+  level:
+    ua.kpi.ipze.ontology.client: DEBUG
