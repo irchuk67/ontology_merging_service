@@ -17,7 +17,7 @@ public class OntologyDao {
 
     private static final String DIRECTORY = "ontology";
     private static final String ONTOLOGY_FILE_NAME = "ontology";
-    private static final String ONTOLOGY_FILE_SUFFIX = ".owl";
+    private static final String ONTOLOGY_FILE_SUFFIX = ".rdf";
 
     private volatile AtomicInteger currentVersion = new AtomicInteger(0);
 

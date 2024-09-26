@@ -2,6 +2,7 @@ package ua.kpi.ipze.ontology.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
@@ -29,7 +30,10 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OntologyService implements CommandLineRunner {
 
-    private static final List<String> DEFAULT_CLASSES = List.of(
+    public static final Double SIMILARITY_THRESHOLD = 0.9;
+    private static final Double COMPATIBILITY_THRESHOLD = 0.5;
+    public static final List<String> DEFAULT_CLASSES = List.of(
+            "Thing",
             "FunctionalProperty",
             "FunctionalProperty",
             "Bag",
@@ -56,13 +60,14 @@ public class OntologyService implements CommandLineRunner {
             "Seq",
             "decimal",
             "string",
-            "dateTime"
+            "dateTime",
+            "integer",
+            "date"
     );
 
     private final OntologyDao ontologyDao;
-    private final HuggingFaceClient huggingFaceClient;
     private final OpenAiService openAiService;
-    private final GeminiAiService geminiAiService;
+    private final MergingOntologyService mergingOntologyService;
 
     public byte[] getOntology() {
         return ontologyDao.getTheLatestVersion();
@@ -77,17 +82,22 @@ public class OntologyService implements CommandLineRunner {
     }
 
     public void mergeOntologies(InputStream inputStreamOntology1, InputStream inputStreamOntology2) {
-//        OntModel resultModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF);
-
         OntModel ontology1 = readOntologyModel(inputStreamOntology1);
-        ExtendedIterator<OntClass> classes1 = extractOntologyClasses(ontology1);
-
+        List<OntClass> classes1 = extractOntologyClasses(ontology1).toList();
+//        List<OntClass> classes1List = classes1.toList();
+//        OntClass teacher1Class = classes1List.stream()
+//                .filter(ontClass -> ontClass.getLocalName().contentEquals("Teacher"))
+//                .findFirst().get();
         OntModel ontology2 = readOntologyModel(inputStreamOntology2);
+        List<OntClass> classes2 = extractOntologyClasses(ontology2).toList();
+//        OntClass teacher2Class = classes2.stream()
+//                .filter(ontClass -> ontClass.getLocalName().contentEquals("Teacher"))
+//                .findFirst().get();
 
-        while (classes1.hasNext()) {
-            OntClass ontology1Class = getClassFromIterator(classes1);
-            ExtendedIterator<OntClass> classes2 = extractOntologyClasses(ontology2);
-            List<String> classes2Names = classes2.mapWith(ontClass -> ontClass.getLocalName()).toList();
+        for (OntClass ontology1Class : classes1){
+            List<String> classes2Names = classes2.stream()
+                    .map(ontClass -> ontClass.getLocalName()).toList();
+
             List<Double> semanticCompatibility = openAiService.getSemanticCompatibility(ontology1Class.getLocalName(), classes2Names).result();
 
             for (int i = 0; i < semanticCompatibility.size(); i++) {
@@ -97,17 +107,23 @@ public class OntologyService implements CommandLineRunner {
                         classes2Names.get(i),
                         semanticCompatibility.get(i)
                 );
+                if (semanticCompatibility.get(i) >= SIMILARITY_THRESHOLD) {
+                    int finalI = i;
+                    OntClass equivalentClass = classes2.stream().filter(cls -> cls.getLocalName().contentEquals(classes2Names.get(finalI))).findFirst().get();
+                    mergingOntologyService.mergeEquivalentClasses(ontology1Class, equivalentClass);
+                }
             }
             System.out.println();
-            break;
         }
+        ontologyDao.updateOntology(modelToByteArray(ontology1));
+        System.exit(0);
     }
 
     private OntClass getClassFromIterator(ExtendedIterator<OntClass> classes) {
         OntClass next;
         do {
             next = classes.next();
-        } while(next != null && (StringUtility.equalNormalized(next.getLocalName(), "thing") || StringUtility.equalNormalized(next.getLocalName(), "nothing")));
+        } while (next != null && (StringUtility.equalNormalized(next.getLocalName(), "thing") || StringUtility.equalNormalized(next.getLocalName(), "nothing")));
 
         return next;
     }
@@ -122,7 +138,7 @@ public class OntologyService implements CommandLineRunner {
     public void run(String... args) throws Exception {
         mergeOntologies(
                 new ByteArrayInputStream(getOntology()),
-                new FileInputStream(Paths.get("src", "main", "resources", "ontology","lab2.owx").toFile())
+                new FileInputStream(Paths.get("src", "main", "resources", "ontology", "base.rdf").toFile())
         );
     }
 
