@@ -1,6 +1,5 @@
 package ua.kpi.ipze.ontology.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +13,7 @@ import ua.kpi.ipze.ontology.util.StringUtility;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.OpenOption;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -34,7 +31,13 @@ public class MergingOntologyService {
     private final Map<String, OntClass> ontology1ClassesMap;
     private final List<OntClass> ontology2Classes;
     private final Map<String, OntClass> ontology2ClassesMap;
+
     private List<SemanticCompatibilityPair> allSemanticCompatibilities = new ArrayList<>();
+    private List<OntClass> ontology1HandledClasses = new ArrayList<>();
+    private List<OntClass> ontology2HandledClasses = new ArrayList<>();
+
+    //key - ontology1, value - ontology2
+    private List<Map.Entry<OntClass, OntClass>> handledClassPairs = new ArrayList<>();
 
     public MergingOntologyService(OpenAiService openAiService, IOService ioService, List<OntClass> ontology1Classes, List<OntClass> ontology2Classes) {
         this.openAiService = openAiService;
@@ -45,6 +48,17 @@ public class MergingOntologyService {
         this.ontology2Classes = ontology2Classes;
         this.ontology2ClassesMap = ontology2Classes.stream()
                 .collect(Collectors.toMap(Resource::getLocalName, ontClass -> ontClass));
+    }
+
+    private boolean checkComparisonPerformed(OntClass ontClass1, OntClass ontClass2) {
+        return handledClassPairs.stream()
+                .anyMatch(handled -> StringUtility.equalNormalized(handled.getKey().getLocalName(), ontClass1.getURI()) &&
+                        StringUtility.equalNormalized(handled.getValue().getURI(), ontClass2.getURI()));
+    }
+
+    private boolean checkClassPresentInOntology1(OntClass ontClass) {
+        return ontology1ClassesMap.keySet().stream()
+                .anyMatch(ont1ClassName -> StringUtility.equalNormalized(ont1ClassName, ontClass.getLocalName()));
     }
 
     public void mergeOntologies() {
@@ -68,8 +82,8 @@ public class MergingOntologyService {
 
         try {
             String s = Files.readString(Paths.get("src", "main", "resources", "semantic.json"));
-            allSemanticCompatibilities.addAll(new ObjectMapper().readValue(s, new TypeReference<List<SemanticCompatibilityPair>>(){}));
-        }catch (IOException e){
+            allSemanticCompatibilities.addAll(new ObjectMapper().readValue(s, new TypeReference<List<SemanticCompatibilityPair>>() {}));
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         for (int i = 0; i < allSemanticCompatibilities.size(); i++) {
@@ -79,10 +93,16 @@ public class MergingOntologyService {
                     allSemanticCompatibilities.get(i).getWord2(),
                     allSemanticCompatibilities.get(i).getValue()
             );
+            OntClass ontology1Class = ontology1ClassesMap.get(allSemanticCompatibilities.get(i).getWord1());
+            OntClass ontology2Class = ontology2ClassesMap.get(allSemanticCompatibilities.get(i).getWord2());
+            if (checkComparisonPerformed(ontology1Class, ontology2Class)) {
+                continue;
+            }
             compareClasses(
-                    ontology1ClassesMap.get(allSemanticCompatibilities.get(i).getWord1()),
-                    ontology2ClassesMap.get(allSemanticCompatibilities.get(i).getWord2()),
+                    ontology1Class,
+                    ontology2Class,
                     allSemanticCompatibilities.get(i));
+            handledClassPairs.add(Map.entry(ontology1Class, ontology2Class));
         }
         System.out.println();
     }
@@ -105,11 +125,12 @@ public class MergingOntologyService {
 
     public void mergeEquivalentClasses(OntClass ontClass1, OntClass ontClass2) {
         OntClass eqClass = ontClass1.getOntModel().createClass(ontClass2.getURI());
-        if (!StringUtility.equalNormalized(ontClass1.getLocalName(), ontClass2.getLocalName()) && !ontology1ClassesMap.containsKey(ontClass2.getLocalName())) {
+        if (!StringUtility.equalNormalized(ontClass1.getLocalName(), ontClass2.getLocalName()) && !checkClassPresentInOntology1(ontClass2)) {
             ontClass1.addEquivalentClass(eqClass);
         }
         mergeDataProperties(ontClass1, ontClass2);
         mergeObjectProperties(ontClass1, ontClass2);
+
         /*
         todo:
          * 1. додаємо екв клас
@@ -121,11 +142,26 @@ public class MergingOntologyService {
     }
 
     public void mergeNewSubclass(OntClass ontClass1, OntClass ontClass2) {
-        ontClass1.addSubClass(ontClass2);
+        Optional<OntClass> existingClassOptional = ontology1Classes.stream()
+                .filter(ontClass -> StringUtility.equalNormalized(ontClass.getLocalName(), ontClass2.getLocalName()))
+                .findFirst();
+        if (existingClassOptional.isPresent()) {
+            ontClass1.addSubClass(existingClassOptional.get());
+            return;
+        }
+        OntClass subclass = ontClass1.getOntModel().createClass(ontClass2.getURI());
+        ontClass1.addSubClass(subclass);
         // todo: copy subclass properties to new ontology
     }
 
     public void mergeNewSuperclass(OntClass ontClass1, OntClass ontClass2) {
+        Optional<OntClass> existingClassOptional = ontology1Classes.stream()
+                .filter(ontClass -> StringUtility.equalNormalized(ontClass.getLocalName(), ontClass2.getLocalName()))
+                .findFirst();
+        if (existingClassOptional.isPresent()) {
+            ontClass1.addSuperClass(existingClassOptional.get());
+            return;
+        }
         OntClass parentClass = ontClass1.getOntModel().createClass(ontClass2.getURI());
         if (!StringUtility.equalNormalized(ontClass1.listSuperClasses().toList().get(0).getLocalName(), ontClass2.getLocalName())) {
             ontClass1.addSuperClass(parentClass);
@@ -149,13 +185,13 @@ public class MergingOntologyService {
         List<String> ontClass2DomainObjectPropertyNames = ontology2DomainObjProp.stream()
                 .map(Property::getLocalName)
                 .toList();
-        if(ontClass1DomainObjectPropertyNames.isEmpty() || ontClass2DomainObjectPropertyNames.isEmpty()) {
+        if (ontClass1DomainObjectPropertyNames.isEmpty() || ontClass2DomainObjectPropertyNames.isEmpty()) {
             return;
         }
         List<SemanticCompatibilityPair> semanticCompatibility = openAiService.getSemanticCompatibility(ontClass1DomainObjectPropertyNames, ontClass2DomainObjectPropertyNames).getResult();
         for (ObjectProperty ont2Property : ontology2DomainObjProp) {
             Optional<ObjectProperty> exitingPropertyOptional = findObjectSemanticCompatibleObjectProperty(ont2Property, ontology1DomainObjProp, semanticCompatibility);
-            if(exitingPropertyOptional.isEmpty()){
+            if (exitingPropertyOptional.isEmpty()) {
                 createNewObjectProperty(ontClass1, ont2Property);
             } else {
                 handleObjectPropertyMerging(ont2Property, exitingPropertyOptional.get());
@@ -195,7 +231,13 @@ public class MergingOntologyService {
                 findSemanticCompatibilityForWords(ont1PropertyRange.getLocalName(), ont2PropertyRange.getLocalName())
                         .ifPresent(semanticCompatibilityPair -> {
                             //FIXME: it can be not only class
-                            compareClasses((OntClass) ont1PropertyRange, (OntClass) ont2PropertyRange, semanticCompatibilityPair);
+                            OntClass ont1PropertyRangeClass = (OntClass) ont1PropertyRange;
+                            OntClass ont2PropertyRangeClass = (OntClass) ont2PropertyRange;
+                            if (checkComparisonPerformed(ont1PropertyRangeClass, ont2PropertyRangeClass)) {
+                                return;
+                            }
+                            compareClasses(ont1PropertyRangeClass, ont2PropertyRangeClass, semanticCompatibilityPair);
+                            handledClassPairs.add(Map.entry(ont1PropertyRangeClass, ont2PropertyRangeClass));
                         });
             });
         });

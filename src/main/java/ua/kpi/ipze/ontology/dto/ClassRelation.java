@@ -10,8 +10,8 @@ import java.util.Arrays;
 public enum ClassRelation {
 
     EQUIVALENT(1),
-    SUBCLASS(2),
-    SUPERCLASS(3),
+    SUPERCLASS(2),
+    SUBCLASS(3),
     DISJOINT(4);
 
     private final int option;
