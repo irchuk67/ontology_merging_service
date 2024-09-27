@@ -1,0 +1,1267 @@
+[
+  {
+    "word1": "Nothing",
+    "word2": "Faculty",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Tutor",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Academic_status",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Publications",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Monograph",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Report",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Scientific_work",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Dissertation",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Meetup",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Article",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Teacher",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Text_book",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Conference",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Nothing",
+    "value": 1.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Department",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Possition",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Pedagogue",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Teachers_category",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "University",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Institute",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Academic_degree",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Performance",
+    "value": 0.0
+  },
+  {
+    "word1": "Nothing",
+    "word2": "Study_guide",
+    "value": 0.0
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Faculty",
+    "value": 0.6
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Tutor",
+    "value": 0.8
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Academic_status",
+    "value": 0.4
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Publications",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Monograph",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Report",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Scientific_work",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Dissertation",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Meetup",
+    "value": 0.2
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Article",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Teacher",
+    "value": 1.0
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Text_book",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Conference",
+    "value": 0.2
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Nothing",
+    "value": 0.1
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Department",
+    "value": 0.5
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Possition",
+    "value": 0.4
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Pedagogue",
+    "value": 0.9
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Teachers_category",
+    "value": 0.6
+  },
+  {
+    "word1": "Teacher",
+    "word2": "University",
+    "value": 0.4
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Institute",
+    "value": 0.4
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Academic_degree",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Performance",
+    "value": 0.3
+  },
+  {
+    "word1": "Teacher",
+    "word2": "Study_guide",
+    "value": 0.3
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Faculty",
+    "value": 0.5
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Tutor",
+    "value": 0.6
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Academic_status",
+    "value": 0.65
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Publications",
+    "value": 0.7
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Monograph",
+    "value": 0.75
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Report",
+    "value": 0.65
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Scientific_work",
+    "value": 0.8
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Dissertation",
+    "value": 1.0
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Meetup",
+    "value": 0.4
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Article",
+    "value": 0.7
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Teacher",
+    "value": 0.5
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Text_book",
+    "value": 0.6
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Conference",
+    "value": 0.55
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Nothing",
+    "value": 0.1
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Department",
+    "value": 0.5
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Possition",
+    "value": 0.4
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Pedagogue",
+    "value": 0.5
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Teachers_category",
+    "value": 0.45
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "University",
+    "value": 0.55
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Institute",
+    "value": 0.55
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Academic_degree",
+    "value": 0.85
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Performance",
+    "value": 0.5
+  },
+  {
+    "word1": "Dissertation",
+    "word2": "Study_guide",
+    "value": 0.6
+  },
+  {
+    "word1": "Patent",
+    "word2": "Faculty",
+    "value": 0.4
+  },
+  {
+    "word1": "Patent",
+    "word2": "Tutor",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Academic_status",
+    "value": 0.2
+  },
+  {
+    "word1": "Patent",
+    "word2": "Publications",
+    "value": 0.5
+  },
+  {
+    "word1": "Patent",
+    "word2": "Monograph",
+    "value": 0.4
+  },
+  {
+    "word1": "Patent",
+    "word2": "Report",
+    "value": 0.5
+  },
+  {
+    "word1": "Patent",
+    "word2": "Scientific_work",
+    "value": 0.5
+  },
+  {
+    "word1": "Patent",
+    "word2": "Dissertation",
+    "value": 0.4
+  },
+  {
+    "word1": "Patent",
+    "word2": "Meetup",
+    "value": 0.2
+  },
+  {
+    "word1": "Patent",
+    "word2": "Article",
+    "value": 0.5
+  },
+  {
+    "word1": "Patent",
+    "word2": "Teacher",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Text_book",
+    "value": 0.4
+  },
+  {
+    "word1": "Patent",
+    "word2": "Conference",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Nothing",
+    "value": 0.1
+  },
+  {
+    "word1": "Patent",
+    "word2": "Department",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Possition",
+    "value": 0.2
+  },
+  {
+    "word1": "Patent",
+    "word2": "Pedagogue",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Teachers_category",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "University",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Institute",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Academic_degree",
+    "value": 0.3
+  },
+  {
+    "word1": "Patent",
+    "word2": "Performance",
+    "value": 0.2
+  },
+  {
+    "word1": "Patent",
+    "word2": "Study_guide",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Faculty",
+    "value": 0.6
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Tutor",
+    "value": 0.8
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Academic_status",
+    "value": 0.5
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Publications",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Monograph",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Report",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Scientific_work",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Dissertation",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Meetup",
+    "value": 0.3
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Article",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Teacher",
+    "value": 0.9
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Text_book",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Conference",
+    "value": 0.3
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Nothing",
+    "value": 0.0
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Department",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Possition",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Pedagogue",
+    "value": 1.0
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Teachers_category",
+    "value": 0.6
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "University",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Institute",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Academic_degree",
+    "value": 0.5
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Performance",
+    "value": 0.4
+  },
+  {
+    "word1": "Pedagogue",
+    "word2": "Study_guide",
+    "value": 0.4
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Faculty",
+    "value": 0.2
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Tutor",
+    "value": 0.3
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Academic_status",
+    "value": 0.4
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Publications",
+    "value": 0.6
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Monograph",
+    "value": 0.55
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Report",
+    "value": 0.5
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Scientific_work",
+    "value": 1.0
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Dissertation",
+    "value": 0.65
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Meetup",
+    "value": 0.2
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Article",
+    "value": 0.6
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Teacher",
+    "value": 0.3
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Text_book",
+    "value": 0.4
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Conference",
+    "value": 0.5
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Nothing",
+    "value": 0.0
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Department",
+    "value": 0.3
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Possition",
+    "value": 0.2
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Pedagogue",
+    "value": 0.3
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Teachers_category",
+    "value": 0.2
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "University",
+    "value": 0.2
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Institute",
+    "value": 0.2
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Academic_degree",
+    "value": 0.4
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Performance",
+    "value": 0.4
+  },
+  {
+    "word1": "ScientificWork",
+    "word2": "Study_guide",
+    "value": 0.4
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Faculty",
+    "value": 0.2
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Tutor",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Academic_status",
+    "value": 0.4
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Publications",
+    "value": 0.8
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Monograph",
+    "value": 0.5
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Report",
+    "value": 0.6
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Scientific_work",
+    "value": 0.7
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Dissertation",
+    "value": 0.5
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Meetup",
+    "value": 0.2
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Article",
+    "value": 0.9
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Teacher",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Text_book",
+    "value": 0.5
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Conference",
+    "value": 0.4
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Nothing",
+    "value": 0.0
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Department",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Possition",
+    "value": 0.2
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Pedagogue",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Teachers_category",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "University",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Institute",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Academic_degree",
+    "value": 0.4
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Performance",
+    "value": 0.3
+  },
+  {
+    "word1": "JournalArticle",
+    "word2": "Study_guide",
+    "value": 0.5
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Faculty",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Tutor",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Academic_status",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Publications",
+    "value": 0.6
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Monograph",
+    "value": 1.0
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Report",
+    "value": 0.5
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Scientific_work",
+    "value": 0.6
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Dissertation",
+    "value": 0.6
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Meetup",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Article",
+    "value": 0.6
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Teacher",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Text_book",
+    "value": 0.6
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Conference",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Nothing",
+    "value": 0.0
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Department",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Possition",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Pedagogue",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Teachers_category",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "University",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Institute",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Academic_degree",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Performance",
+    "value": 0.1
+  },
+  {
+    "word1": "Monograph",
+    "word2": "Study_guide",
+    "value": 0.6
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Faculty",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Tutor",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Academic_status",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Publications",
+    "value": 0.8
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Monograph",
+    "value": 0.6
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Report",
+    "value": 0.7
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Scientific_work",
+    "value": 0.7
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Dissertation",
+    "value": 0.6
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Meetup",
+    "value": 0.5
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Article",
+    "value": 0.8
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Teacher",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Text_book",
+    "value": 0.6
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Conference",
+    "value": 0.6
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Nothing",
+    "value": 0.0
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Department",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Possition",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Pedagogue",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Teachers_category",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "University",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Institute",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Academic_degree",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Performance",
+    "value": 0.1
+  },
+  {
+    "word1": "ConferencePaper",
+    "word2": "Study_guide",
+    "value": 0.6
+  },
+  {
+    "word1": "Department",
+    "word2": "Faculty",
+    "value": 0.8
+  },
+  {
+    "word1": "Department",
+    "word2": "Tutor",
+    "value": 0.5
+  },
+  {
+    "word1": "Department",
+    "word2": "Academic_status",
+    "value": 0.6
+  },
+  {
+    "word1": "Department",
+    "word2": "Publications",
+    "value": 0.4
+  },
+  {
+    "word1": "Department",
+    "word2": "Monograph",
+    "value": 0.3
+  },
+  {
+    "word1": "Department",
+    "word2": "Report",
+    "value": 0.4
+  },
+  {
+    "word1": "Department",
+    "word2": "Scientific_work",
+    "value": 0.5
+  },
+  {
+    "word1": "Department",
+    "word2": "Dissertation",
+    "value": 0.5
+  },
+  {
+    "word1": "Department",
+    "word2": "Meetup",
+    "value": 0.3
+  },
+  {
+    "word1": "Department",
+    "word2": "Article",
+    "value": 0.4
+  },
+  {
+    "word1": "Department",
+    "word2": "Teacher",
+    "value": 0.5
+  },
+  {
+    "word1": "Department",
+    "word2": "Text_book",
+    "value": 0.4
+  },
+  {
+    "word1": "Department",
+    "word2": "Conference",
+    "value": 0.5
+  },
+  {
+    "word1": "Department",
+    "word2": "Nothing",
+    "value": 0.1
+  },
+  {
+    "word1": "Department",
+    "word2": "Department",
+    "value": 1.0
+  },
+  {
+    "word1": "Department",
+    "word2": "Possition",
+    "value": 0.3
+  },
+  {
+    "word1": "Department",
+    "word2": "Pedagogue",
+    "value": 0.5
+  },
+  {
+    "word1": "Department",
+    "word2": "Teachers_category",
+    "value": 0.4
+  },
+  {
+    "word1": "Department",
+    "word2": "University",
+    "value": 0.7
+  },
+  {
+    "word1": "Department",
+    "word2": "Institute",
+    "value": 0.7
+  },
+  {
+    "word1": "Department",
+    "word2": "Academic_degree",
+    "value": 0.6
+  },
+  {
+    "word1": "Department",
+    "word2": "Performance",
+    "value": 0.4
+  },
+  {
+    "word1": "Department",
+    "word2": "Study_guide",
+    "value": 0.4
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Faculty",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Tutor",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Academic_status",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Publications",
+    "value": 0.6
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Monograph",
+    "value": 0.5
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Report",
+    "value": 0.4
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Scientific_work",
+    "value": 0.5
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Dissertation",
+    "value": 0.4
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Meetup",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Article",
+    "value": 0.6
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Teacher",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Text_book",
+    "value": 0.7
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Conference",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Nothing",
+    "value": 0.0
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Department",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Possition",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Pedagogue",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Teachers_category",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "University",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Institute",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Academic_degree",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Performance",
+    "value": 0.1
+  },
+  {
+    "word1": "BookChapter",
+    "word2": "Study_guide",
+    "value": 0.7
+  }
+]
