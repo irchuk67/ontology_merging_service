@@ -12,7 +12,7 @@ public enum ClassRelation {
     EQUIVALENT(1),
     SUPERCLASS(2),
     SUBCLASS(3),
-    DISJOINT(4);
+    NO_RELATION(4);
 
     private final int option;
 

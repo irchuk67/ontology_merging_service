@@ -133,7 +133,7 @@ public class OntologyService implements CommandLineRunner {
         return ontologyModel;
     }
 
-    private ExtendedIterator<OntClass> extractOntologyClasses(OntModel ontologyModel) {
+    public static ExtendedIterator<OntClass> extractOntologyClasses(OntModel ontologyModel) {
         return ontologyModel.listNamedClasses()
                 .filterDrop(ontClass -> DEFAULT_CLASSES.contains(ontClass.getLocalName()));
     }

@@ -52,13 +52,20 @@ public class MergingOntologyService {
 
     private boolean checkComparisonPerformed(OntClass ontClass1, OntClass ontClass2) {
         return handledClassPairs.stream()
-                .anyMatch(handled -> StringUtility.equalNormalized(handled.getKey().getLocalName(), ontClass1.getURI()) &&
-                        StringUtility.equalNormalized(handled.getValue().getURI(), ontClass2.getURI()));
+                .anyMatch(handled -> StringUtility.equalNormalized(handled.getKey().getLocalName(), ontClass1.getLocalName()) &&
+                        StringUtility.equalNormalized(handled.getValue().getLocalName(), ontClass2.getLocalName()));
     }
 
-    private boolean checkClassPresentInOntology1(OntClass ontClass) {
-        return ontology1ClassesMap.keySet().stream()
-                .anyMatch(ont1ClassName -> StringUtility.equalNormalized(ont1ClassName, ontClass.getLocalName()));
+    private Optional<OntClass> findClassInOntology1(OntClass ontClass) {
+        return OntologyService.extractOntologyClasses(ontology1Classes.get(0).getOntModel()).toList().stream()
+                .filter(ont1Class -> StringUtility.equalNormalized(ont1Class.getLocalName(), ontClass.getLocalName()))
+                .findFirst();
+    }
+
+    private List<OntClass> getOntology1SameClasses(OntClass ontClass){
+        return OntologyService.extractOntologyClasses(ontology1Classes.get(0).getOntModel()).toList().stream()
+                .filter(ont1Class -> StringUtility.equalNormalized(ont1Class.getLocalName(), ontClass.getLocalName()))
+                .toList();
     }
 
     public void mergeOntologies() {
@@ -82,7 +89,8 @@ public class MergingOntologyService {
 
         try {
             String s = Files.readString(Paths.get("src", "main", "resources", "semantic.json"));
-            allSemanticCompatibilities.addAll(new ObjectMapper().readValue(s, new TypeReference<List<SemanticCompatibilityPair>>() {}));
+            allSemanticCompatibilities.addAll(new ObjectMapper().readValue(s, new TypeReference<List<SemanticCompatibilityPair>>() {
+            }));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -107,26 +115,42 @@ public class MergingOntologyService {
         System.out.println();
     }
 
-    public void compareClasses(OntClass ontology1Class, OntClass ontology2Class, SemanticCompatibilityPair semanticCompatibility) {
+    public boolean compareClasses(OntClass ontology1Class, OntClass ontology2Class, SemanticCompatibilityPair semanticCompatibility) {
         if (semanticCompatibility.getValue() >= SIMILARITY_THRESHOLD) {
             mergeEquivalentClasses(ontology1Class, ontology2Class);
-            return;
+            return true;
         }
         if (semanticCompatibility.getValue() >= COMPATIBILITY_THRESHOLD) {
             ClassRelation classRelation = ioService.askForRelation(ontology1Class.getLocalName(), ontology2Class.getLocalName());
             switch (classRelation) {
-                case EQUIVALENT -> mergeEquivalentClasses(ontology1Class, ontology2Class);
-                case SUBCLASS -> mergeNewSubclass(ontology1Class, ontology2Class);
-                case SUPERCLASS -> mergeNewSuperclass(ontology1Class, ontology2Class);
-                case DISJOINT -> ontology1Class.addDisjointWith(ontology2Class);
+                case EQUIVALENT -> {
+                    mergeEquivalentClasses(ontology1Class, ontology2Class);
+                    return true;
+                }
+                case SUBCLASS -> {
+                    mergeNewSubclass(ontology1Class, ontology2Class);
+                    return true;
+                }
+                case SUPERCLASS -> {
+                    mergeNewSuperclass(ontology1Class, ontology2Class);
+                    return true;
+                }
+                case NO_RELATION -> {
+                    return false;
+                }
             }
         }
+        return false;
     }
 
     public void mergeEquivalentClasses(OntClass ontClass1, OntClass ontClass2) {
-        OntClass eqClass = ontClass1.getOntModel().createClass(ontClass2.getURI());
-        if (!StringUtility.equalNormalized(ontClass1.getLocalName(), ontClass2.getLocalName()) && !checkClassPresentInOntology1(ontClass2)) {
+        if (!StringUtility.equalNormalized(ontClass1.getLocalName(), ontClass2.getLocalName()) && findClassInOntology1(ontClass2).isEmpty()) {
+            OntClass eqClass = ontClass1.getOntModel().createClass(ontClass2.getURI());
             ontClass1.addEquivalentClass(eqClass);
+        }
+        if(findClassInOntology1(ontClass2).isPresent()){
+            List<OntClass> ont1RepetitiveClassesWithOntClass2 = getOntology1SameClasses(ontClass2);
+            ont1RepetitiveClassesWithOntClass2.forEach(ontClass1::addEquivalentClass);
         }
         mergeDataProperties(ontClass1, ontClass2);
         mergeObjectProperties(ontClass1, ontClass2);
@@ -146,14 +170,15 @@ public class MergingOntologyService {
                 .filter(ontClass -> StringUtility.equalNormalized(ontClass.getLocalName(), ontClass2.getLocalName()))
                 .findFirst();
         if (existingClassOptional.isPresent()) {
-            ontClass1.addSubClass(existingClassOptional.get());
+            existingClassOptional.get().addSuperClass(ontClass1);
             return;
         }
         OntClass subclass = ontClass1.getOntModel().createClass(ontClass2.getURI());
-        ontClass1.addSubClass(subclass);
+        subclass.addSuperClass(ontClass1);
         // todo: copy subclass properties to new ontology
     }
 
+    //todo: add non related classes from ontology 2
     public void mergeNewSuperclass(OntClass ontClass1, OntClass ontClass2) {
         Optional<OntClass> existingClassOptional = ontology1Classes.stream()
                 .filter(ontClass -> StringUtility.equalNormalized(ontClass.getLocalName(), ontClass2.getLocalName()))
@@ -162,8 +187,8 @@ public class MergingOntologyService {
             ontClass1.addSuperClass(existingClassOptional.get());
             return;
         }
-        OntClass parentClass = ontClass1.getOntModel().createClass(ontClass2.getURI());
         if (!StringUtility.equalNormalized(ontClass1.listSuperClasses().toList().get(0).getLocalName(), ontClass2.getLocalName())) {
+            OntClass parentClass = ontClass1.getOntModel().createClass(ontClass2.getURI());
             ontClass1.addSuperClass(parentClass);
         }
         mergeDataProperties(ontClass1, ontClass2);
@@ -226,21 +251,43 @@ public class MergingOntologyService {
     }
 
     private void handleObjectPropertyMerging(OntProperty propertyToMerge, ObjectProperty existingProperty) {
-        propertyToMerge.listRange().toList().forEach(ont2PropertyRange -> {
-            existingProperty.listRange().toList().forEach(ont1PropertyRange -> {
-                findSemanticCompatibilityForWords(ont1PropertyRange.getLocalName(), ont2PropertyRange.getLocalName())
-                        .ifPresent(semanticCompatibilityPair -> {
-                            //FIXME: it can be not only class
-                            OntClass ont1PropertyRangeClass = (OntClass) ont1PropertyRange;
-                            OntClass ont2PropertyRangeClass = (OntClass) ont2PropertyRange;
-                            if (checkComparisonPerformed(ont1PropertyRangeClass, ont2PropertyRangeClass)) {
-                                return;
-                            }
-                            compareClasses(ont1PropertyRangeClass, ont2PropertyRangeClass, semanticCompatibilityPair);
-                            handledClassPairs.add(Map.entry(ont1PropertyRangeClass, ont2PropertyRangeClass));
-                        });
-            });
-        });
+        List<? extends OntResource> list = propertyToMerge.listRange().toList().stream()
+                .filter(range -> !DEFAULT_PROPERTY_CLASSES.contains(range.getLocalName()))
+                .toList();
+        List<? extends OntResource> list1 = existingProperty.listRange().toList().stream()
+                .filter(range -> !DEFAULT_PROPERTY_CLASSES.contains(range.getLocalName()))
+                .toList();
+
+        for (OntResource ont2PropertyRange : list) {
+            boolean merged = false;
+            for (OntResource ont1PropertyRange : list1) {
+                Optional<SemanticCompatibilityPair> semanticCompatibilityOptional = findSemanticCompatibilityForWords(ont1PropertyRange.getLocalName(), ont2PropertyRange.getLocalName());
+                if (semanticCompatibilityOptional.isPresent()) {
+                    //FIXME: it can be not only class
+                    OntClass ont1PropertyRangeClass = (OntClass) ont1PropertyRange;
+                    OntClass ont2PropertyRangeClass = (OntClass) ont2PropertyRange;
+                    if (checkComparisonPerformed(ont1PropertyRangeClass, ont2PropertyRangeClass)) {
+                        return;
+                    }
+                    boolean classIsMerged = compareClasses(ont1PropertyRangeClass, ont2PropertyRangeClass, semanticCompatibilityOptional.get());
+                    handledClassPairs.add(Map.entry(ont1PropertyRangeClass, ont2PropertyRangeClass));
+                    if (classIsMerged) {
+                        merged = true;
+                        break;
+                    }
+                }
+            }
+            if (merged) {
+                continue;
+            }
+            OntClass ont2PropertyRangeClass = (OntClass) ont2PropertyRange;
+            Optional<OntClass> classInOntology1Optional = findClassInOntology1(ont2PropertyRangeClass);
+            if (classInOntology1Optional.isPresent()) {
+                existingProperty.addRange(classInOntology1Optional.get());
+            } else {
+                existingProperty.addRange(ont2PropertyRangeClass);
+            }
+        }
     }
 
     private Optional<SemanticCompatibilityPair> findSemanticCompatibilityForWords(String word1, String word2) {
