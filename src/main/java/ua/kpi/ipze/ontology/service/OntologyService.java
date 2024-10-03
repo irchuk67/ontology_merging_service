@@ -14,11 +14,9 @@ import org.semanticweb.owlapi.model.*;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import ua.kpi.ipze.ontology.controller.WebSocketHandler;
+import ua.kpi.ipze.ontology.service.io.WebSocketHandler;
 import ua.kpi.ipze.ontology.dao.OntologyDao;
-import ua.kpi.ipze.ontology.service.io.ConsoleIOService;
 import ua.kpi.ipze.ontology.service.io.WebSocketIOService;
-import ua.kpi.ipze.ontology.util.StringUtility;
 
 import java.io.*;
 import java.util.List;
@@ -85,25 +83,12 @@ public class OntologyService {
         OntModel ontology2 = readOntologyModel(inputStreamOntology2);
         List<OntClass> classes2 = extractOntologyClasses(ontology2).toList();
 
-        MergingClassOntologyService mergingClassOntologyService = new MergingClassOntologyService(
-                openAiService,
-                new WebSocketIOService(sessionId, webSocketHandler),
-                classes1,
-                classes2
-        );
+        MergingClassOntologyService mergingClassOntologyService = new MergingClassOntologyService(openAiService, new WebSocketIOService(sessionId, webSocketHandler), classes1, classes2);
         mergingClassOntologyService.mergeOntologies();
-//        new MergingIndividualOntologyService(ontology1, ontology2).mergeOntologies();
+        MergingIndividualOntologyService mergingIndividualOntologyService = new MergingIndividualOntologyService(ontology1, ontology2);
+        mergingIndividualOntologyService.mergeOntologies();
 
         ontologyDao.updateOntology(modelToByteArray(ontology1));
-    }
-
-    private OntClass getClassFromIterator(ExtendedIterator<OntClass> classes) {
-        OntClass next;
-        do {
-            next = classes.next();
-        } while (next != null && (StringUtility.equalNormalized(next.getLocalName(), "thing") || StringUtility.equalNormalized(next.getLocalName(), "nothing")));
-
-        return next;
     }
 
     public static byte[] modelToByteArray(OntModel model) {
@@ -131,8 +116,6 @@ public class OntologyService {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         OWLOntology ontology = manager.loadOntologyFromOntologyDocument(inputStream);
 
-        // save the file into RDF/XML format
-        //in this case, my ontology file and format already manage prefix
         RDFXMLOntologyFormat rdfxmlFormat = new RDFXMLOntologyFormat();
         File temp = File.createTempFile(UUID.randomUUID().toString(), ".rdf");
         manager.saveOntology(ontology, rdfxmlFormat, IRI.create(temp));

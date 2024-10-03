@@ -25,13 +25,13 @@ public class OpenAiService {
                3) words are exactly the same - 1.0
                4) other cases - less then 0.699
             Take into account logical compatibility, usages of provided words, but not the domain. The more words has the same meaning, the bigger this number should be
-            
+                        
             Respond STRICTLY IN STRING AS JSON FORMAT:
             { "result" : [{"word1": word1, "word2": word2, "value": value}]}, where word1 is word from the first array,
              word2 is word from the second array that is compared with main word, value is result of comparison in floating point numbers, like 0.567890.
             Each value in the result list should correspond to the provided word to be compared.
             If you have met in the list exactly the same word, as the first one - DO NOT SKIP IT, and place in the correct order value 1.0.
-            
+                        
              When you prepared answer - check results and read prompt one again. Check, whether there are some mistakes in compatibility between words.
              Return ONLY STRING AS JSON, without any markers, comments or anything - ONLY JSON!!! Skip The comments - provide result number in the same order, as words in array.
              COMMENTS ARE BANNED!
@@ -50,7 +50,7 @@ public class OpenAiService {
         ChatCompletions completions = openAiClient.completions(chatCompletionsOptions);
         try {
             String content = completions.getChoices().get(0).getMessage().getContent();
-            if(content.startsWith("```json")) {
+            if (content.startsWith("```json")) {
                 content = content.replace("```json", "```")
                         .replace("```", "");
             }

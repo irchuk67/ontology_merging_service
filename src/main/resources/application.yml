@@ -16,8 +16,6 @@ ontology:
 
 openai-api:
   key: ${OPEN_AI_API_KEY}
-hugging-face-api:
-  key: ${HUGGING_FACE_API_KEY}
 
 logging:
   level:

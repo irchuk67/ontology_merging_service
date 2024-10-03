@@ -291,6 +291,9 @@ public class MergingClassOntologyService {
                 .filter(range -> !DEFAULT_PROPERTY_CLASSES.contains(range.getLocalName()))
                 .toList();
 
+        ObjectProperty newProperty = existingProperty.getOntModel().createObjectProperty(propertyToMerge.getURI());
+        existingProperty.addEquivalentProperty(newProperty);
+
         for (OntResource ont2PropertyRange : list) {
             boolean merged = false;
             for (OntResource ont1PropertyRange : list1) {

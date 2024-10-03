@@ -1,4 +1,4 @@
-package ua.kpi.ipze.ontology.controller;
+package ua.kpi.ipze.ontology.service.io;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

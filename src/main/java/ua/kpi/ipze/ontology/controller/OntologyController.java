@@ -10,6 +10,7 @@ import ua.kpi.ipze.ontology.service.OntologyService;
 @RequestMapping("/ontologies")
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin
 public class OntologyController {
 
     private final OntologyService ontologyService;
@@ -21,6 +22,7 @@ public class OntologyController {
 
     @PutMapping("/{sessionId}")
     public void mergeOntology(@RequestPart MultipartFile file, @PathVariable String sessionId) {
+        log.info("Received file to merge ontologies with sessionId={}", sessionId);
         ontologyService.mergeOntologies(file, sessionId);
     }
 
