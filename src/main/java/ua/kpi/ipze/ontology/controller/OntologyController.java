@@ -19,9 +19,9 @@ public class OntologyController {
         return ontologyService.getOntology();
     }
 
-    @PutMapping
-    public void mergeOntology(@RequestPart MultipartFile file) {
-        ontologyService.mergeOntologies(file);
+    @PutMapping("/{sessionId}")
+    public void mergeOntology(@RequestPart MultipartFile file, @PathVariable String sessionId) {
+        ontologyService.mergeOntologies(file, sessionId);
     }
 
 }

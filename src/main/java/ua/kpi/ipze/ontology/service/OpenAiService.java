@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ua.kpi.ipze.ontology.client.OpenAiClient;
 import ua.kpi.ipze.ontology.dto.openai.*;
@@ -48,7 +49,12 @@ public class OpenAiService {
                 .build();
         ChatCompletions completions = openAiClient.completions(chatCompletionsOptions);
         try {
-            return new ObjectMapper().readValue(completions.getChoices().get(0).getMessage().getContent(), SemanticCompatibilityDto.class);
+            String content = completions.getChoices().get(0).getMessage().getContent();
+            if(content.startsWith("```json")) {
+                content = content.replace("```json", "```")
+                        .replace("```", "");
+            }
+            return new ObjectMapper().readValue(content, SemanticCompatibilityDto.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

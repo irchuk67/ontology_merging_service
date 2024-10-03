@@ -2,7 +2,6 @@ package ua.kpi.ipze.ontology.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
@@ -12,27 +11,23 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.model.*;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import ua.kpi.ipze.ontology.client.HuggingFaceClient;
+import ua.kpi.ipze.ontology.controller.WebSocketHandler;
 import ua.kpi.ipze.ontology.dao.OntologyDao;
-import ua.kpi.ipze.ontology.dao.SemanticCompatibilityRequest;
-import ua.kpi.ipze.ontology.dto.openai.SemanticCompatibilityDto;
-import ua.kpi.ipze.ontology.dto.openai.SemanticCompatibilityPair;
 import ua.kpi.ipze.ontology.service.io.ConsoleIOService;
+import ua.kpi.ipze.ontology.service.io.WebSocketIOService;
 import ua.kpi.ipze.ontology.util.StringUtility;
 
 import java.io.*;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.Scanner;
 import java.util.UUID;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class OntologyService implements CommandLineRunner {
+public class OntologyService {
 
     public static final List<String> DEFAULT_CLASSES = List.of(
             "Thing",
@@ -69,35 +64,37 @@ public class OntologyService implements CommandLineRunner {
 
     private final OntologyDao ontologyDao;
     private final OpenAiService openAiService;
+    private final WebSocketHandler webSocketHandler;
 
     public byte[] getOntology() {
         return ontologyDao.getTheLatestVersion();
     }
 
-    public void mergeOntologies(MultipartFile file) {
+    @Async("ontologyMergingExecutor")
+    public void mergeOntologies(MultipartFile file, String sessionId) {
         try {
-            mergeOntologies(new ByteArrayInputStream(getOntology()), file.getInputStream());
+            mergeOntologies(new ByteArrayInputStream(getOntology()), file.getInputStream(), sessionId);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void mergeOntologies(InputStream inputStreamOntology1, InputStream inputStreamOntology2) {
+    public void mergeOntologies(InputStream inputStreamOntology1, InputStream inputStreamOntology2, String sessionId) {
         OntModel ontology1 = readOntologyModel(inputStreamOntology1);
         List<OntClass> classes1 = extractOntologyClasses(ontology1).toList();
         OntModel ontology2 = readOntologyModel(inputStreamOntology2);
         List<OntClass> classes2 = extractOntologyClasses(ontology2).toList();
 
-        MergingOntologyService mergingOntologyService = new MergingOntologyService(
+        MergingClassOntologyService mergingClassOntologyService = new MergingClassOntologyService(
                 openAiService,
-                new ConsoleIOService(),
+                new WebSocketIOService(sessionId, webSocketHandler),
                 classes1,
                 classes2
         );
-        mergingOntologyService.mergeOntologies();
+        mergingClassOntologyService.mergeOntologies();
+//        new MergingIndividualOntologyService(ontology1, ontology2).mergeOntologies();
 
         ontologyDao.updateOntology(modelToByteArray(ontology1));
-        System.exit(0);
     }
 
     private OntClass getClassFromIterator(ExtendedIterator<OntClass> classes) {
@@ -113,14 +110,6 @@ public class OntologyService implements CommandLineRunner {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         model.write(baos, "RDF/XML");
         return baos.toByteArray();
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        mergeOntologies(
-                new ByteArrayInputStream(getOntology()),
-                new FileInputStream(Paths.get("src", "main", "resources", "ontology", "lab2.owx").toFile())
-        );
     }
 
     private OntModel readOntologyModel(InputStream inputStream) {

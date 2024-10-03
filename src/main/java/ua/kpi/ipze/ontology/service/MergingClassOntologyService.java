@@ -18,7 +18,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class MergingOntologyService {
+public class MergingClassOntologyService {
 
     private static final Double SIMILARITY_THRESHOLD = 0.95;
     private static final Double COMPATIBILITY_THRESHOLD = 0.8;
@@ -39,7 +39,7 @@ public class MergingOntologyService {
     //key - ontology1, value - ontology2
     private List<Map.Entry<OntClass, OntClass>> handledClassPairs = new ArrayList<>();
 
-    public MergingOntologyService(OpenAiService openAiService, IOService ioService, List<OntClass> ontology1Classes, List<OntClass> ontology2Classes) {
+    public MergingClassOntologyService(OpenAiService openAiService, IOService ioService, List<OntClass> ontology1Classes, List<OntClass> ontology2Classes) {
         this.openAiService = openAiService;
         this.ioService = ioService;
         this.ontology1Classes = ontology1Classes;

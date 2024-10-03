@@ -24,4 +24,11 @@ public enum ClassRelation {
                 .orElseThrow(() -> new IllegalArgumentException("Can not identify option"));
     }
 
+    public static ClassRelation fromName(String value) {
+        return Arrays.stream(ClassRelation.values())
+                .filter(classRelation -> classRelation.name().contentEquals(value))
+                .findFirst()
+                .orElseThrow();
+    }
+
 }
