@@ -38,8 +38,9 @@ public class MergingClassOntologyService {
 
     //key - ontology1, value - ontology2
     private List<Map.Entry<OntClass, OntClass>> handledClassPairs = new ArrayList<>();
+    private final MessageCollectorService messageCollectorService;
 
-    public MergingClassOntologyService(OpenAiService openAiService, IOService ioService, List<OntClass> ontology1Classes, List<OntClass> ontology2Classes) {
+    public MergingClassOntologyService(OpenAiService openAiService, IOService ioService, List<OntClass> ontology1Classes, List<OntClass> ontology2Classes, MessageCollectorService messageCollectorService) {
         this.openAiService = openAiService;
         this.ioService = ioService;
         this.ontology1Classes = ontology1Classes;
@@ -48,6 +49,7 @@ public class MergingClassOntologyService {
         this.ontology2Classes = ontology2Classes;
         this.ontology2ClassesMap = ontology2Classes.stream()
                 .collect(Collectors.toMap(Resource::getLocalName, ontClass -> ontClass));
+        this.messageCollectorService = messageCollectorService;
     }
 
     private boolean checkComparisonPerformed(OntClass ontClass1, OntClass ontClass2) {
@@ -117,6 +119,7 @@ public class MergingClassOntologyService {
 
     public boolean compareClasses(OntClass ontology1Class, OntClass ontology2Class, SemanticCompatibilityPair semanticCompatibility) {
         if (semanticCompatibility.getValue() >= SIMILARITY_THRESHOLD) {
+            messageCollectorService.addEquivalentClass(ontology1Class.getLocalName(), ontology2Class.getLocalName());
             mergeEquivalentClasses(ontology1Class, ontology2Class);
             return true;
         }
@@ -124,14 +127,17 @@ public class MergingClassOntologyService {
             ClassRelation classRelation = ioService.askForRelation(ontology1Class.getLocalName(), ontology2Class.getLocalName());
             switch (classRelation) {
                 case EQUIVALENT -> {
+                    messageCollectorService.addEquivalentClass(ontology1Class.getLocalName(), ontology2Class.getLocalName());
                     mergeEquivalentClasses(ontology1Class, ontology2Class);
                     return true;
                 }
                 case SUBCLASS -> {
+                    messageCollectorService.addSubClass(ontology1Class.getLocalName(), ontology2Class.getLocalName());
                     mergeNewSubclass(ontology1Class, ontology2Class);
                     return true;
                 }
                 case SUPERCLASS -> {
+                    messageCollectorService.addSuperClass(ontology1Class.getLocalName(), ontology2Class.getLocalName());
                     mergeNewSuperclass(ontology1Class, ontology2Class);
                     return true;
                 }
@@ -264,6 +270,7 @@ public class MergingClassOntologyService {
     private void createNewObjectProperty(OntClass ontClass1, OntProperty ontProperty) {
         OntProperty newProperty = ontClass1.getOntModel().createObjectProperty(ontProperty.getURI());
         newProperty.addDomain(ontClass1);
+        messageCollectorService.addNewProperty(newProperty.getLocalName());
         List<? extends OntResource> rangeClasses = ontProperty.listRange().toList().stream()
                 .filter(range -> !DEFAULT_PROPERTY_CLASSES.contains(range.getLocalName()))
                 .toList();
@@ -293,6 +300,7 @@ public class MergingClassOntologyService {
 
         ObjectProperty newProperty = existingProperty.getOntModel().createObjectProperty(propertyToMerge.getURI());
         existingProperty.addEquivalentProperty(newProperty);
+        messageCollectorService.addMergedProperty(existingProperty.getLocalName(), newProperty.getLocalName());
 
         for (OntResource ont2PropertyRange : list) {
             boolean merged = false;
@@ -321,11 +329,13 @@ public class MergingClassOntologyService {
             if (classInOntology1Optional.isPresent()) {
                 ontology2HandledClasses.add(ont2PropertyRangeClass.getLocalName());
                 existingProperty.addRange(classInOntology1Optional.get());
+                messageCollectorService.addExtendedWithRangeProperty(existingProperty.getLocalName(), classInOntology1Optional.get().getLocalName());
                 addRelatedClasses(ont2PropertyRangeClass, classInOntology1Optional.get(), existingProperty.getOntModel());
             } else {
                 ontology2HandledClasses.add(ont2PropertyRangeClass.getLocalName());
                 OntClass newRangeClass = existingProperty.getOntModel().createClass(ont2PropertyRangeClass.getURI());
                 existingProperty.addRange(newRangeClass);
+                messageCollectorService.addExtendedWithRangeProperty(existingProperty.getLocalName(), newRangeClass.getLocalName());
                 addRelatedClasses(ont2PropertyRangeClass, newRangeClass, existingProperty.getOntModel());
             }
         }
@@ -355,9 +365,15 @@ public class MergingClassOntologyService {
                         Optional<OntClass> classInOntology1Optional = findClassInOntology1(ont2ClassSuperclass);
                         ontology2HandledClasses.add(ont2ClassSuperclass.getLocalName());
                         if (classInOntology1Optional.isEmpty()) {
-                            newClass.addSuperClass(ontModel1.createClass(ont2ClassSuperclass.getURI()));
+                            OntClass createdClass = ontModel1.createClass(ont2ClassSuperclass.getURI());
+                            messageCollectorService.addNewClass(createdClass.getLocalName());
+                            newClass.addSuperClass(createdClass);
+                            messageCollectorService.addSuperClass(newClass.getLocalName(), createdClass.getLocalName());
                         } else {
-                            getOntology1SameClasses(ont2ClassSuperclass).forEach(ontClass -> newClass.addSuperClass(ontClass));
+                            getOntology1SameClasses(ont2ClassSuperclass).forEach(ontClass -> {
+                                newClass.addSuperClass(ontClass);
+                                messageCollectorService.addSuperClass(newClass.getLocalName(), ontClass.getLocalName());
+                            });
                         }
                         break;
                     }
@@ -369,9 +385,15 @@ public class MergingClassOntologyService {
             Optional<OntClass> classInOntology1Optional = findClassInOntology1(ont2ClassSuperclass);
             ontology2HandledClasses.add(ont2ClassSuperclass.getLocalName());
             if (classInOntology1Optional.isEmpty()) {
-                newClass.addSuperClass(ontModel1.createClass(ont2ClassSuperclass.getURI()));
+                OntClass createdClass = ontModel1.createClass(ont2ClassSuperclass.getURI());
+                messageCollectorService.addNewClass(createdClass.getLocalName());
+                newClass.addSuperClass(createdClass);
+                messageCollectorService.addSuperClass(newClass.getLocalName(), createdClass.getLocalName());
             } else {
-                getOntology1SameClasses(ont2ClassSuperclass).forEach(ontClass -> newClass.addSuperClass(ontClass));
+                getOntology1SameClasses(ont2ClassSuperclass).forEach(ontClass -> {
+                    newClass.addSuperClass(ontClass);
+                    messageCollectorService.addSuperClass(newClass.getLocalName(), ontClass.getLocalName());
+                });
             }
         }
 
@@ -395,9 +417,14 @@ public class MergingClassOntologyService {
                         Optional<OntClass> classInOntology1Optional = findClassInOntology1(ont2Subclass);
                         if (classInOntology1Optional.isEmpty()) {
                             ontology2HandledClasses.add(ont2Subclass.getLocalName());
-                            ontModel1.createClass(ont2Subclass.getURI()).addSuperClass(newClass);
+                            OntClass createdClass = ontModel1.createClass(ont2Subclass.getURI());
+                            createdClass.addSuperClass(newClass);
+                            messageCollectorService.addSubClass(newClass.getLocalName(), createdClass.getLocalName());
                         } else {
-                            getOntology1SameClasses(ont2Subclass).forEach(ontClass -> ontClass.addSuperClass(newClass));
+                            getOntology1SameClasses(ont2Subclass).forEach(ontClass -> {
+                                ontClass.addSuperClass(newClass);
+                                messageCollectorService.addSubClass(newClass.getLocalName(), ontClass.getLocalName());
+                            });
                         }
                         break;
                     }
@@ -409,9 +436,14 @@ public class MergingClassOntologyService {
             Optional<OntClass> classInOntology1Optional = findClassInOntology1(ont2Subclass);
             if (classInOntology1Optional.isEmpty()) {
                 ontology2HandledClasses.add(ont2Subclass.getLocalName());
-                ontModel1.createClass(ont2Subclass.getURI()).addSuperClass(newClass);
+                OntClass createdClass = ontModel1.createClass(ont2Subclass.getURI());
+                createdClass.addSuperClass(newClass);
+                messageCollectorService.addSubClass(newClass.getLocalName(), createdClass.getLocalName());
             } else {
-                getOntology1SameClasses(ont2Subclass).forEach(ontClass -> ontClass.addSuperClass(newClass));
+                getOntology1SameClasses(ont2Subclass).forEach(ontClass -> {
+                    ontClass.addSuperClass(newClass);
+                    messageCollectorService.addSubClass(newClass.getLocalName(), ontClass.getLocalName());
+                });
             }
         }
     }
@@ -437,6 +469,7 @@ public class MergingClassOntologyService {
                 .filter(ontProperty -> !ontClass1PropertyNames.contains(ontProperty.getLocalName().toLowerCase())) //TODO: replace with semantic compatibility
                 .forEach(ontProperty -> {
                     OntProperty newProperty = ontClass1.getOntModel().createDatatypeProperty(ontProperty.getURI());
+                    messageCollectorService.addNewProperty(newProperty.getLocalName());
                     newProperty.addDomain(ontClass1);
                     newProperty.addRange(ontProperty.getRange());
                 });

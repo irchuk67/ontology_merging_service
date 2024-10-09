@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ua.kpi.ipze.ontology.dto.ClassConflictMessage;
 import ua.kpi.ipze.ontology.dto.ClassRelation;
+import ua.kpi.ipze.ontology.service.MessageCollectorService;
 
 import java.util.Arrays;
 
@@ -31,4 +32,12 @@ public class WebSocketIOService implements IOService {
         }
     }
 
+    public void sendPerformedActions(MessageCollectorService messageCollectorService) {
+        try {
+           String message = objectMapper.writeValueAsString(messageCollectorService.getPerformedActions());
+           webSocketHandler.sendMessageToClient(sessionId, message);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 }

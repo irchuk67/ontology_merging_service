@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ua.kpi.ipze.ontology.service.OntologyService;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/ontologies")
 @Slf4j
@@ -21,9 +23,9 @@ public class OntologyController {
     }
 
     @PutMapping("/{sessionId}")
-    public void mergeOntology(@RequestPart MultipartFile file, @PathVariable String sessionId) {
+    public void mergeOntology(@RequestPart MultipartFile file, @PathVariable String sessionId) throws IOException {
         log.info("Received file to merge ontologies with sessionId={}", sessionId);
-        ontologyService.mergeOntologies(file, sessionId);
+        ontologyService.mergeOntologies(file.getInputStream(), sessionId);
     }
 
 }

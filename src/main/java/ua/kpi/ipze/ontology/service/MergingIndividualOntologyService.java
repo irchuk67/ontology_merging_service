@@ -14,10 +14,12 @@ public class MergingIndividualOntologyService {
 
     private final OntModel ontModel1;
     private final OntModel ontModel2;
+    private final MessageCollectorService messageCollectorService;
 
-    public MergingIndividualOntologyService(OntModel ontModel1, OntModel ontModel2) {
+    public MergingIndividualOntologyService(OntModel ontModel1, OntModel ontModel2, MessageCollectorService messageCollectorService) {
         this.ontModel1 = ontModel1;
         this.ontModel2 = ontModel2;
+        this.messageCollectorService = messageCollectorService;
     }
 
     public void mergeOntologies() {
@@ -33,6 +35,7 @@ public class MergingIndividualOntologyService {
                 ont1SameNamedIndividuals.forEach(individual1 -> mergeProperties(individual1, individual2));
             } else {
                 Individual individual = ontModel1.createIndividual(individual2.getURI(), individual2.getRDFType(true));
+                messageCollectorService.addNewIndividual(individual.getLocalName());
                 mergeProperties(individual, individual2);
             }
         }
@@ -77,6 +80,7 @@ public class MergingIndividualOntologyService {
                         .forEach(objectProperty -> {
                             Statement statement = ontModel1.createStatement(individual1, objectProperty, property2.getObject());
                             ontModel1.add(statement);
+                            messageCollectorService.addStatementToIndividual(individual1.getLocalName(), objectProperty.getLocalName(), property2.getObject().asNode().getLocalName());
                         });
                 List<DatatypeProperty> dataProperties = ontModel1.listDatatypeProperties().toList().stream()
                         .filter(property -> property.getLocalName().contentEquals(property2.getPredicate().getLocalName()))
@@ -84,9 +88,11 @@ public class MergingIndividualOntologyService {
                 dataProperties
                         .forEach(dataProperty -> {
                             Statement statement = ontModel1.createStatement(individual1, dataProperty, property2.getObject());
+                            messageCollectorService.addStatementToIndividual(individual1.getLocalName(), dataProperty.getLocalName(), property2.getObject().asLiteral().getLexicalForm());
                             ontModel1.add(statement);
                         });
             }
+
         }
     }
 

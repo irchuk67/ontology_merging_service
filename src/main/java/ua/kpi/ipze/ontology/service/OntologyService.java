@@ -69,12 +69,8 @@ public class OntologyService {
     }
 
     @Async("ontologyMergingExecutor")
-    public void mergeOntologies(MultipartFile file, String sessionId) {
-        try {
-            mergeOntologies(new ByteArrayInputStream(getOntology()), file.getInputStream(), sessionId);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void mergeOntologies(InputStream file, String sessionId) {
+        mergeOntologies(new ByteArrayInputStream(getOntology()), file, sessionId);
     }
 
     public void mergeOntologies(InputStream inputStreamOntology1, InputStream inputStreamOntology2, String sessionId) {
@@ -83,12 +79,21 @@ public class OntologyService {
         OntModel ontology2 = readOntologyModel(inputStreamOntology2);
         List<OntClass> classes2 = extractOntologyClasses(ontology2).toList();
 
-        MergingClassOntologyService mergingClassOntologyService = new MergingClassOntologyService(openAiService, new WebSocketIOService(sessionId, webSocketHandler), classes1, classes2);
-        mergingClassOntologyService.mergeOntologies();
-        MergingIndividualOntologyService mergingIndividualOntologyService = new MergingIndividualOntologyService(ontology1, ontology2);
-        mergingIndividualOntologyService.mergeOntologies();
+        MessageCollectorService messageCollectorService = new MessageCollectorService();
+        WebSocketIOService webSocketIOService = new WebSocketIOService(sessionId, webSocketHandler);
+        MergingClassOntologyService mergingOntologyService = new MergingClassOntologyService(
+                openAiService,
+                webSocketIOService,
+                classes1,
+                classes2,
+                messageCollectorService
+        );
+        mergingOntologyService.mergeOntologies();
+        new MergingIndividualOntologyService(ontology1, ontology2, messageCollectorService).mergeOntologies();
 
         ontologyDao.updateOntology(modelToByteArray(ontology1));
+        webSocketIOService.sendPerformedActions(messageCollectorService);
+        webSocketHandler.closeConnection(sessionId);
     }
 
     public static byte[] modelToByteArray(OntModel model) {
