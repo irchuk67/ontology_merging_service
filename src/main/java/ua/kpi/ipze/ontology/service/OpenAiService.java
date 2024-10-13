@@ -78,7 +78,7 @@ public class OpenAiService {
         ChatCompletionsOptions chatCompletionsOptions = ChatCompletionsOptions.builder()
                 .temperature(0.5)
                 .messages(List.of(
-                        new ChatRequestUserMessage(String.format(ARRAY_TO_ARRAY_SEMANTIC_COMPATIBILITY_PROMPT, classes1.toString(), classes2.toString()))
+                        new ChatRequestUserMessage(String.format(ONTOLOGY_CLASSES_SEMANTIC_COMPATIBILITY_PROMPT, classes1.toString(), classes2.toString()))
                 ))
                 .model("gpt-4o")
                 .build();

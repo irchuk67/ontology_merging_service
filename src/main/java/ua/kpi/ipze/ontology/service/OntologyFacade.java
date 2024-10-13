@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ua.kpi.ipze.ontology.entity.Ontology;
 import ua.kpi.ipze.ontology.exception.OntologiesAreNotCompatibleException;
+import ua.kpi.ipze.ontology.service.io.WebSocketHandler;
 
 import java.io.*;
 import java.util.List;
@@ -27,6 +28,7 @@ public class OntologyFacade {
 
     private final OntologyService ontologyService;
     private final OpenAiService openAiService;
+    private final WebSocketHandler webSocketHandler;
 
     public byte[] getOntology() {
         return ontologyService.getOntology();
@@ -47,6 +49,7 @@ public class OntologyFacade {
         List<OntClass> classes2 = extractOntologyClasses(ontology2).toList();
         boolean ontologiesAreCompatible = openAiService.checkOntologiesCompatibility(classes1, classes2);
         if(!ontologiesAreCompatible) {
+            webSocketHandler.closeConnection(sessionId);
             throw new OntologiesAreNotCompatibleException("Ontology has nothing in common with current. Please upload another one, or update current ontology");
         }
         ontologyService.mergeOntologies(classes1, classes2, ontology1, ontology2, sessionId);
