@@ -4,7 +4,7 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://diploma:diploma@cluster0.n0a7g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      database: domain
+      database: diploma
   cloud:
     openfeign:
       client:

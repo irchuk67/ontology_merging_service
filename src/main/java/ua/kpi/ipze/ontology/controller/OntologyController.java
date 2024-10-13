@@ -2,9 +2,10 @@ package ua.kpi.ipze.ontology.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ua.kpi.ipze.ontology.service.OntologyService;
+import ua.kpi.ipze.ontology.service.OntologyFacade;
 
 import java.io.IOException;
 
@@ -15,17 +16,18 @@ import java.io.IOException;
 @CrossOrigin
 public class OntologyController {
 
-    private final OntologyService ontologyService;
+    private final OntologyFacade ontologyFacade;
 
     @GetMapping
     public byte[] getCurrentOntology() {
-        return ontologyService.getOntology();
+        return ontologyFacade.getOntology();
     }
 
     @PutMapping("/{sessionId}")
-    public void mergeOntology(@RequestPart MultipartFile file, @PathVariable String sessionId) throws IOException {
+    public ResponseEntity<String> mergeOntology(@RequestPart MultipartFile file, @PathVariable String sessionId) throws IOException {
         log.info("Received file to merge ontologies with sessionId={}", sessionId);
-        ontologyService.mergeOntologies(file.getInputStream(), sessionId);
+        ontologyFacade.mergeOntologies(file, sessionId);
+        return ResponseEntity.ok(file.getOriginalFilename());
     }
 
 }

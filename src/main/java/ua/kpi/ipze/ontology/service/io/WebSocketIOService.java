@@ -25,7 +25,7 @@ public class WebSocketIOService implements IOService {
             String message = objectMapper.writeValueAsString(classConflictMessage);
             webSocketHandler.sendMessageToClient(sessionId, message);
             String clientAnswer = webSocketHandler.waitForClientMessage(sessionId);
-            log.info("ClientAnswer: {}", clientAnswer);
+            log.info("Asked for relation: {} and {}. ClientAnswer: {}", class1, class2, clientAnswer);
             return ClassRelation.fromName(clientAnswer);
         } catch (Exception e) {
             throw new RuntimeException(e);

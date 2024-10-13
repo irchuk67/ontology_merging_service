@@ -14,11 +14,14 @@ import org.semanticweb.owlapi.model.*;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import ua.kpi.ipze.ontology.entity.Ontology;
+import ua.kpi.ipze.ontology.repository.OntologyRepository;
 import ua.kpi.ipze.ontology.service.io.WebSocketHandler;
 import ua.kpi.ipze.ontology.dao.OntologyDao;
 import ua.kpi.ipze.ontology.service.io.WebSocketIOService;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,25 +63,24 @@ public class OntologyService {
             "date"
     );
 
-    private final OntologyDao ontologyDao;
     private final OpenAiService openAiService;
     private final WebSocketHandler webSocketHandler;
+    private final OntologyRepository ontologyRepository;
+
+    Ontology getActualOntology() {
+        return ontologyRepository.findFirstByOrderByDateTimeDesc();
+    }
 
     public byte[] getOntology() {
-        return ontologyDao.getTheLatestVersion();
+        Ontology ontology = getActualOntology();
+        if(ontology == null) {
+            throw new RuntimeException("Could not find ontology");
+        }
+        return ontology.getOwlContent().getBytes();
     }
 
     @Async("ontologyMergingExecutor")
-    public void mergeOntologies(InputStream file, String sessionId) {
-        mergeOntologies(new ByteArrayInputStream(getOntology()), file, sessionId);
-    }
-
-    public void mergeOntologies(InputStream inputStreamOntology1, InputStream inputStreamOntology2, String sessionId) {
-        OntModel ontology1 = readOntologyModel(inputStreamOntology1);
-        List<OntClass> classes1 = extractOntologyClasses(ontology1).toList();
-        OntModel ontology2 = readOntologyModel(inputStreamOntology2);
-        List<OntClass> classes2 = extractOntologyClasses(ontology2).toList();
-
+    public void mergeOntologies(List<OntClass> classes1, List<OntClass> classes2, OntModel ontology1, OntModel ontology2,  String sessionId) {
         MessageCollectorService messageCollectorService = new MessageCollectorService();
         WebSocketIOService webSocketIOService = new WebSocketIOService(sessionId, webSocketHandler);
         MergingClassOntologyService mergingOntologyService = new MergingClassOntologyService(
@@ -91,7 +93,12 @@ public class OntologyService {
         mergingOntologyService.mergeOntologies();
         new MergingIndividualOntologyService(ontology1, ontology2, messageCollectorService).mergeOntologies();
 
-        ontologyDao.updateOntology(modelToByteArray(ontology1));
+        Ontology updatedOntology = Ontology.builder()
+                .dateTime(LocalDateTime.now())
+                .owlContent(new String(modelToByteArray(ontology1)))
+                .build();
+
+        ontologyRepository.save(updatedOntology);
         webSocketIOService.sendPerformedActions(messageCollectorService);
         webSocketHandler.closeConnection(sessionId);
     }
@@ -100,31 +107,6 @@ public class OntologyService {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         model.write(baos, "RDF/XML");
         return baos.toByteArray();
-    }
-
-    private OntModel readOntologyModel(InputStream inputStream) {
-        OntModel ontologyModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF);
-        try {
-            ontologyModel.read(convert(inputStream), null, FileUtils.langXML);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return ontologyModel;
-    }
-
-    public static ExtendedIterator<OntClass> extractOntologyClasses(OntModel ontologyModel) {
-        return ontologyModel.listNamedClasses()
-                .filterDrop(ontClass -> DEFAULT_CLASSES.contains(ontClass.getLocalName()));
-    }
-
-    private InputStream convert(InputStream inputStream) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
-        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-        OWLOntology ontology = manager.loadOntologyFromOntologyDocument(inputStream);
-
-        RDFXMLOntologyFormat rdfxmlFormat = new RDFXMLOntologyFormat();
-        File temp = File.createTempFile(UUID.randomUUID().toString(), ".rdf");
-        manager.saveOntology(ontology, rdfxmlFormat, IRI.create(temp));
-        return new FileInputStream(temp);
     }
 
 }

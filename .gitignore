@@ -19,7 +19,7 @@ src/main/resources/ontology
 *.iws
 *.iml
 *.ipr
-
+.env
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
