@@ -80,7 +80,7 @@ public class OntologyService {
     }
 
     @Async("ontologyMergingExecutor")
-    public void mergeOntologies(List<OntClass> classes1, List<OntClass> classes2, OntModel ontology1, OntModel ontology2,  String sessionId) {
+    public void mergeOntologies(List<OntClass> classes1, List<OntClass> classes2, OntModel ontology1, OntModel ontology2,  String sessionId, Integer currentOntologyVersion) {
         MessageCollectorService messageCollectorService = new MessageCollectorService();
         WebSocketIOService webSocketIOService = new WebSocketIOService(sessionId, webSocketHandler);
         MergingClassOntologyService mergingOntologyService = new MergingClassOntologyService(
@@ -96,6 +96,8 @@ public class OntologyService {
         Ontology updatedOntology = Ontology.builder()
                 .dateTime(LocalDateTime.now())
                 .owlContent(new String(modelToByteArray(ontology1)))
+                .name("Base ontology")
+                .version(currentOntologyVersion + 1)
                 .build();
 
         ontologyRepository.save(updatedOntology);

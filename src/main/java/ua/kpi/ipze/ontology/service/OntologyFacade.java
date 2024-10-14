@@ -52,7 +52,7 @@ public class OntologyFacade {
             webSocketHandler.closeConnection(sessionId);
             throw new OntologiesAreNotCompatibleException("Ontology has nothing in common with current. Please upload another one, or update current ontology");
         }
-        ontologyService.mergeOntologies(classes1, classes2, ontology1, ontology2, sessionId);
+        ontologyService.mergeOntologies(classes1, classes2, ontology1, ontology2, sessionId, ontology.getVersion());
     }
 
     private OntModel readOntologyModel(InputStream inputStream) {

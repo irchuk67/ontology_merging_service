@@ -10,7 +10,7 @@ public class StringUtility {
             throw new IllegalArgumentException("String is null or empty");
         }
         String normalized = string.replaceAll("\\s+", "")
-                .replaceAll("[^a-zA-Z0-9]+", "")
+                .replaceAll("[^a-zA-Z0-9а-яА-Я]+", "")
                 .toLowerCase();
         return new StringObject(string, normalized);
     }

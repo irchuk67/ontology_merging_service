@@ -130,6 +130,7 @@ public class MergingClassOntologyService {
     }
 
     public boolean compareClasses(OntClass ontology1Class, OntClass ontology2Class, SemanticCompatibilityPair semanticCompatibility) {
+        log.info("Compare class {} with class {} with SC {}", ontology1Class.getLocalName(), ontology2Class.getLocalName(), semanticCompatibility);
         if (semanticCompatibility.getValue() >= SIMILARITY_THRESHOLD) {
             messageCollectorService.addEquivalentClass(ontology1Class.getLocalName(), ontology2Class.getLocalName());
             mergeEquivalentClasses(ontology1Class, ontology2Class);
@@ -236,6 +237,7 @@ public class MergingClassOntologyService {
 
 
     private void mergeObjectProperties(OntClass ontClass1, OntClass ontClass2) {
+
         List<ObjectProperty> ontology1DomainObjProp = ontClass1.getOntModel().listObjectProperties().toList().stream()
                 .filter(objectProperty -> objectProperty.hasDomain(ontClass1))
                 .toList();

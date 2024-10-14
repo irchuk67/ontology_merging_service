@@ -1,5 +1,6 @@
 package ua.kpi.ipze.ontology.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
@@ -8,6 +9,7 @@ import ua.kpi.ipze.ontology.util.StringUtility;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class MergingIndividualOntologyService {
 
     private static final List<String> DEFAULT_DOMAINS = List.of("http://www.w3.org", "https://www.w3.org");
@@ -32,7 +34,10 @@ public class MergingIndividualOntologyService {
                     .filter(subject -> StringUtility.equalNormalized(subject.getLocalName(), individual2.getLocalName()))
                     .toList();
             if (!ont1SameNamedIndividuals.isEmpty()) {
-                ont1SameNamedIndividuals.forEach(individual1 -> mergeProperties(individual1, individual2));
+                ont1SameNamedIndividuals.forEach(individual1 -> {
+                    log.info("Merge individual {} with individual {}", individual1.getLocalName(), individual1.getLocalName());
+                    mergeProperties(individual1, individual2);
+                });
             } else {
                 Individual individual = ontModel1.createIndividual(individual2.getURI(), individual2.getRDFType(true));
                 messageCollectorService.addNewIndividual(individual.getLocalName());
